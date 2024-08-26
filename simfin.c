@@ -22,16 +22,34 @@ int leerArchivoTXT(const char* nombreArchivo, Activo** cartera, int* numActivos)
         return 0;
     }
 
-    fscanf(archivo, "%d", numActivos);
+    // Lee el número de activos
+    if (fscanf(archivo, "%d", numActivos) != 1) {
+        printf("Error al leer el número de activos.\n");
+        fclose(archivo);
+        return 0;
+    }
+
     *cartera = (Activo*)malloc((*numActivos) * sizeof(Activo));
-    
+    if (*cartera == NULL) {
+        printf("Error al asignar memoria para la cartera.\n");
+        fclose(archivo);
+        return 0;
+    }
+
+    // Lee cada activo
     for (int i = 0; i < *numActivos; i++) {
-        fscanf(archivo, "%s %lf %lf %lf", (*cartera)[i].nombre, &(*cartera)[i].valor_actual, &(*cartera)[i].tasa_rendimiento, &(*cartera)[i].riesgo);
+        if (fscanf(archivo, "%s %lf %lf %lf", (*cartera)[i].nombre, &(*cartera)[i].valor_actual, &(*cartera)[i].tasa_rendimiento, &(*cartera)[i].riesgo) != 4) {
+            printf("Error al leer los datos del activo %d.\n", i + 1);
+            free(*cartera);
+            fclose(archivo);
+            return 0;
+        }
     }
 
     fclose(archivo);
     return 1;
 }
+
 
 // Función para validar los datos de los activos
 int validarDatos(Activo* cartera, int numActivos) {
@@ -172,14 +190,46 @@ void generarReporte(Activo* cartera, int numActivos, int numEscenarios, double* 
     } else {
         printf("Comentario: La alta volatilidad sugiere que los resultados podrían ser impredecibles y volátiles, lo cual es un riesgo para la cartera.\n\n");
     }
-
+    
     // Resumen por Activo
     printf("Resumen por Activo:\n");
     for (int i = 0; i < numActivos; i++) {
         printf("Activo: %s\n", cartera[i].nombre);
+        
+        // Valor Inicial
         printf("  Valor Inicial: %.2f\n", cartera[i].valor_actual);
-        // Aquí se puede incluir el valor final promedio o alguna otra métrica relevante
+        printf("  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.\n");
+        if (cartera[i].valor_actual > 1000) {
+            printf("  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.\n");
+        } else {
+            printf("  -> Interpretación: El valor inicial es bajo, lo que podría indicar un activo de menor calidad o uno que está subvalorado.\n");
+        }
+        
+        // Tasa de Rendimiento
+        printf("  Tasa de Rendimiento: %.2f\n", cartera[i].tasa_rendimiento);
+        printf("  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.\n");
+        if (cartera[i].tasa_rendimiento > 0.05) {
+            printf("  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.\n");
+        } else if (cartera[i].tasa_rendimiento > 0.02) {
+            printf("  -> Interpretación: La tasa de rendimiento es moderada, lo que sugiere un balance entre riesgo y retorno.\n");
+        } else {
+            printf("  -> Interpretación: La tasa de rendimiento es baja, lo que indica un retorno esperado limitado. Esto podría ser menos favorable si el riesgo es alto.\n");
+        }
+
+        // Riesgo (Volatilidad)
+        printf("  Riesgo (Volatilidad): %.2f\n", cartera[i].riesgo);
+        printf("  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.\n");
+        if (cartera[i].riesgo < 0.1) {
+            printf("  -> Interpretación: El riesgo es bajo, lo cual es positivo para la estabilidad del activo, pero podría limitar el potencial de ganancias.\n");
+        } else if (cartera[i].riesgo < 0.3) {
+            printf("  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.\n");
+        } else {
+            printf("  -> Interpretación: El riesgo es alto, lo que indica una alta volatilidad. Esto puede llevar a grandes pérdidas o ganancias, por lo que se debe manejar con precaución.\n");
+        }
+        
+        printf("\n");
     }
+
 
     printf("\nReporte generado correctamente.\n");
 }
@@ -192,7 +242,21 @@ int main() {
     int numActivos;
     const char* nombreArchivo = "datos.txt";
 
-    // Lectura del archivo
+    printf("Simulación Financiera\n");
+    printf("Este programa simula escenarios financieros y calcula el Valor en Riesgo (VaR) de una cartera de activos.\n\n");
+    printf("si aun no posee un archivo de datos, por favor cree uno con el nombre 'datos.txt' en el directorio actual.\n");
+    printf("Asegurese de que el archivo tenga el siguiente formato:\n");
+    printf("Numero de activos en primera fila del archivo, únicamente incluir el número de activos\n");
+    printf("Nombre del activo, valor actual, tasa de rendimiento, riesgo (volatilidad) en cada fila\n\n");
+    printf("Ejemplo:\n\n");
+    printf("1\n");
+    printf("Activo1 100.0 0.05 0.1\n\n");
+    printf("presione cualquier tecla para continuar\n\n");
+    getchar();
+
+
+
+   // Lectura del archivo
     if (!leerArchivoTXT(nombreArchivo, &cartera, &numActivos)) {
         return 1;
     }
@@ -220,6 +284,13 @@ int main() {
     // Generación de reporte con las nuevas funciones
     generarReporte(cartera, numActivos, numEscenarios, perdidas, var);
 
+    // Liberar memoria
     free(cartera); // Liberar la memoria asignada
+    for (int i = 0; i < numActivos; i++) {
+        free(matrizCovarianza[i]);
+    }
+    free(matrizCovarianza);
+    free(perdidas);
+
     return 0;
 }
