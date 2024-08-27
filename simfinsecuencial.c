@@ -16,29 +16,29 @@ typedef struct {
 
 // Función para leer el archivo TXT
 int leerArchivoTXT(const char* nombreArchivo, Activo** cartera, int* numActivos) {
-    FILE* archivo = fopen(nombreArchivo, "r"); // Abre el archivo en modo lectura, si no existe, retorna NULL
+    FILE* archivo = fopen(nombreArchivo, "r");
     if (!archivo) {
         printf("No se pudo abrir el archivo: %s\n", nombreArchivo);
         return 0;
     }
 
     // Lee el número de activos
-    if (fscanf(archivo, "%d", numActivos) != 1) { // Lee un entero, si no se puede, retorna 0
+    if (fscanf(archivo, "%d", numActivos) != 1) {
         printf("Error al leer el número de activos.\n");
         fclose(archivo);
         return 0;
     }
 
-    *cartera = (Activo*)malloc((*numActivos) * sizeof(Activo)); // Asigna memoria para la cartera, esto significa que se crea un array de Activos
-    if (*cartera == NULL) { // Si no se puede asignar memoria, retorna 0
+    *cartera = (Activo*)malloc((*numActivos) * sizeof(Activo));
+    if (*cartera == NULL) {
         printf("Error al asignar memoria para la cartera.\n");
         fclose(archivo);
         return 0;
     }
 
     // Lee cada activo
-    for (int i = 0; i < *numActivos; i++) { // Itera sobre cada activo, es decir, cada fila del archivo, y lee los datos
-        if (fscanf(archivo, "%s %lf %lf %lf", (*cartera)[i].nombre, &(*cartera)[i].valor_actual, &(*cartera)[i].tasa_rendimiento, &(*cartera)[i].riesgo) != 4) { // Lee los datos de un activo, si no se puede, retorna 0
+    for (int i = 0; i < *numActivos; i++) {
+        if (fscanf(archivo, "%s %lf %lf %lf", (*cartera)[i].nombre, &(*cartera)[i].valor_actual, &(*cartera)[i].tasa_rendimiento, &(*cartera)[i].riesgo) != 4) {
             printf("Error al leer los datos del activo %d.\n", i + 1);
             free(*cartera);
             fclose(archivo);
@@ -49,7 +49,6 @@ int leerArchivoTXT(const char* nombreArchivo, Activo** cartera, int* numActivos)
     fclose(archivo);
     return 1;
 }
-
 
 // Función para generar un número aleatorio con distribución normal usando el método Box-Muller
 double generarDistribucionNormal(double media, double desviacion) { // Genera un número aleatorio con distribución normal
@@ -208,8 +207,8 @@ void generarReporte(Activo* cartera, int numActivos, int numEscenarios, double* 
 
     // Resumen por Activo
     fprintf(reporte, "Resumen por Activo:\n");
-    #pragma omp parallel for schedule(dynamic)
     for (int i = 0; i < numActivos; i++) {
+        fprintf(reporte, "\n");
         fprintf(reporte, "Activo: %s\n", cartera[i].nombre);
         fprintf(reporte, "  Valor Inicial: %.2f\n", cartera[i].valor_actual);
         fprintf(reporte, "  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.\n");
@@ -240,7 +239,7 @@ void generarReporte(Activo* cartera, int numActivos, int numEscenarios, double* 
         } else {
             fprintf(reporte, "  -> Interpretación: El riesgo es alto, lo que indica una alta volatilidad. Esto puede llevar a grandes pérdidas o ganancias, por lo que se debe manejar con precaución.\n");
         }
-        
+        fprintf(reporte, "\n");
         fprintf(reporte, "\n");
     }
 
@@ -252,64 +251,64 @@ void generarReporte(Activo* cartera, int numActivos, int numEscenarios, double* 
 
 // Función principal
 int main() {
-    double start_time = omp_get_wtime(); // Inicia el cronómetro para medir el tiempo de ejecución
-    Activo* cartera; // Arreglo de activos que se inicializa con la lectura del archivo
-    int numActivos; // Número de activos en la cartera
-    const char* nombreArchivo = "datos.txt"; // Nombre del archivo de datos 
+    Activo* cartera;
+    int numActivos;
+    const char* nombreArchivo = "datos.txt";
 
     printf("Simulación Financiera\n");
     printf("Este programa simula escenarios financieros y calcula el Valor en Riesgo (VaR) de una cartera de activos.\n\n");
-    printf("si aun no posee un archivo de datos, por favor cree uno con el nombre 'datos.txt' en el directorio actual.\n");
-    printf("Asegurese de que el archivo tenga el siguiente formato:\n");
-    printf("Numero de activos en primera fila del archivo, únicamente incluir el número de activos\n");
+    printf("Si aún no posee un archivo de datos, por favor cree uno con el nombre 'datos.txt' en el directorio actual.\n");
+    printf("Asegúrese de que el archivo tenga el siguiente formato:\n");
+    printf("Número de activos en la primera fila del archivo, únicamente incluir el número de activos\n");
     printf("Nombre del activo, valor actual, tasa de rendimiento, riesgo (volatilidad) en cada fila\n\n");
     printf("Ejemplo:\n\n");
-    printf("1\n");
-    printf("Activo1 100.0 0.05 0.1\n\n");
-    printf("presione cualquier tecla para continuar\n\n");
+    printf("4\n");
+    printf("Activo1 15000.00 0.05 0.02\n");
+    printf("Activo2 25000.00 0.07 0.03\n");
+    printf("Activo3 18000.00 0.06 0.025\n");
+    printf("Activo4 22000.00 0.08 0.04\n\n");
+    printf("Presione cualquier tecla para continuar\n\n");
     getchar();
+    
+    double start_time = omp_get_wtime();
 
-
-
-   // Lectura del archivo
-    if (!leerArchivoTXT(nombreArchivo, &cartera, &numActivos)) { // Lee el archivo de datos y asigna los valores a la cartera y el número de activos
+    // Lectura del archivo
+    if (!leerArchivoTXT(nombreArchivo, &cartera, &numActivos)) {
         return 1;
     }
 
     // Validación de datos
-    if (!validarDatosSecuencial(cartera, numActivos)) { // Valida que los datos de los activos sean válidos
+    if (!validarDatosSecuencial(cartera, numActivos)) {
         free(cartera);
         return 1;
     }
 
-    // Definir la matriz de covarianza (para la correlación entre activos)
-    double** matrizCovarianza = generarMatrizCovarianza(numActivos); // Genera una matriz de covarianza simple (identidad)
+    // Definir la matriz de covarianza
+    double** matrizCovarianza = generarMatrizCovarianza(numActivos);
 
-    // Simulación de escenarios usando la nueva función
-    int numEscenarios = 1000; // Número de escenarios a simular
-    simularEscenariosCorrelacionadosSecuenciual(cartera, numActivos, numEscenarios, matrizCovarianza); // Simula escenarios con correlación entre activos
+    // Simulación de escenarios
+    int numEscenarios = 1000;
+    simularEscenariosCorrelacionadosSecuenciual(cartera, numActivos, numEscenarios, matrizCovarianza);
 
     // Generar pérdidas simuladas para calcular VaR
-    double* perdidas = calcularPerdidasSimuladasSecuencial(cartera, numActivos, numEscenarios); // Calcula las pérdidas simuladas para cada escenario y activo
+    double* perdidas = calcularPerdidasSimuladasSecuencial(cartera, numActivos, numEscenarios);
 
-    // Cálculo del VaR usando la función mejorada
-    double var = calcularVaRPercentil(perdidas, numEscenarios, 0.95); // Calcula el VaR de acuerdo a un percentil dado (95%)
-    printf("Valor en Riesgo (VaR) de la cartera: %.2f\n", var);
+    // Cálculo del VaR
+    double var = calcularVaRPercentil(perdidas, numEscenarios, 0.95);
 
-    // Generación de reporte con las nuevas funciones
-    generarReporte(cartera, numActivos, numEscenarios, perdidas, var); // Genera un reporte final con interpretaciones de los resultados
-
+    // Generar el reporte final
+    generarReporte(cartera, numActivos, numEscenarios, perdidas, var);
 
     // Liberar memoria
-    free(cartera); // Liberar la memoria asignada
-    for (int i = 0; i < numActivos; i++) { // Liberar la memoria asignada para la matriz de covarianza
-        free(matrizCovarianza[i]); // Liberar la memoria asignada para cada fila de la matriz
+    free(cartera);
+    for (int i = 0; i < numActivos; i++) {
+        free(matrizCovarianza[i]);
     }
-    free(matrizCovarianza); // Liberar la memoria asignada para la matriz
-    free(perdidas); // Liberar la memoria asignada para las pérdidas simuladas
+    free(matrizCovarianza);
+    free(perdidas);
 
-    double end_time = omp_get_wtime(); // Obtiene el tiempo de ejecución final
-    double total_time = end_time - start_time; // Calcula el tiempo total de ejecución
-    printf("Tiempo de ejecución total: %.5f segundos\n", total_time); // Imprime el tiempo total de ejecución
+    double end_time = omp_get_wtime();
+    printf("Tiempo total de ejecución: %.2f segundos\n", end_time - start_time);
+
     return 0;
 }
