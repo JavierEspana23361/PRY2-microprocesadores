@@ -86,7 +86,7 @@ double** generarMatrizCovarianza(int numActivos) { // Genera una matriz de covar
 
 // Función para simular escenarios con correlación entre activos
 void simularEscenariosCorrelacionadosParalelizado(Activo* cartera, int numActivos, int numEscenarios, double** matrizCovarianza) { // Simula escenarios con correlación entre activos
-    #pragma omp parallel for // Paraleliza el ciclo para simular cada escenario, con la misma semilla para todos los hilos
+    #pragma omp parallel for schedule(dynamic) // Paraleliza el ciclo para simular cada escenario, con la misma semilla para todos los hilos
     for (int i = 0; i < numEscenarios; i++) { // Itera sobre cada escenario, simulando el precio de cada activo
         printf("Simulación %d:\n", i + 1); // Imprime el número de simulación actual (comienza en 1)
         for (int j = 0; j < numActivos; j++) { // Itera sobre cada activo, simulando el precio ajustado
@@ -113,8 +113,8 @@ void simularEscenariosCorrelacionadosSecuenciual(Activo* cartera, int numActivos
 // Función para validar los datos de los activos
 int validarDatosParalelizado(Activo* cartera, int numActivos) { // Valida que los datos sean válidos
     int datosValidos = 1; // Variable para indicar si los datos son válidos o no
-
-    #pragma omp parallel for // Paraleliza el ciclo para validar cada activo
+    omp_set_num_threads(12); // Establece el número de hilos a 12
+    #pragma omp parallel for schedule (dynamic) // Paraleliza el ciclo para validar cada activo
     for (int i = 0; i < numActivos; i++) {
         if (cartera[i].valor_actual <= 0 || cartera[i].riesgo <= 0) {
             printf("Datos no válidos en el activo: %s\n", cartera[i].nombre);
@@ -142,8 +142,8 @@ int validarDatosSecuencial(Activo* cartera, int numActivos) { // Valida que los 
 // Función para calcular pérdidas simuladas (necesaria para el cálculo de VaR)
 double* calcularPerdidasSimuladasParalelizado(Activo* cartera, int numActivos, int numEscenarios) { // Calcula las pérdidas simuladas para cada escenario y activo
     double* perdidas = (double*)malloc(numEscenarios * sizeof(double)); // Asigna memoria para las pérdidas simuladas (un array de doubles)
-
-    #pragma omp parallel for // Paraleliza el ciclo para calcular las pérdidas de cada escenario
+    omp_set_num_threads(12); // Establece el número de hilos a 12
+    #pragma omp parallel for schedule (dynamic)// Paraleliza el ciclo para calcular las pérdidas de cada escenario
     for (int i = 0; i < numEscenarios; i++) {
         perdidas[i] = 0; // Inicializa las pérdidas para el escenario actual en 0, luego suma las pérdidas de cada activo
         for (int j = 0; j < numActivos; j++) {
