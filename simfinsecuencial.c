@@ -86,6 +86,7 @@ double** generarMatrizCovarianza(int numActivos) { // Genera una matriz de covar
 
 //Función para simular escenarios con correlación entre activos de forma SECUANCIAL
 void simularEscenariosCorrelacionadosSecuenciual(Activo* cartera, int numActivos, int numEscenarios, double** matrizCovarianza) { // Simula escenarios con correlación entre activos
+    
     for (int i = 0; i < numEscenarios; i++) { // Itera sobre cada escenario, simulando el precio de cada activo
         printf("Simulación %d:\n", i + 1); // Imprime el número de simulación actual (comienza en 1)
         for (int j = 0; j < numActivos; j++) { // Itera sobre cada activo, simulando el precio ajustado

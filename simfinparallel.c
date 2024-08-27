@@ -74,8 +74,10 @@ double simularPrecioLogNormal(double precio_inicial, double tasa_crecimiento, do
 // Función para generar una matriz de covarianza (en este ejemplo, se usa una identidad simple)
 double** generarMatrizCovarianza(int numActivos) { // Genera una matriz de covarianza simple, que es una matriz identidad simple (1 en la diagonal, 0 en otros lugares)
     double** matriz = (double**)malloc(numActivos * sizeof(double*)); // Asigna memoria para la matriz, que es un array de arrays
+    #pragma omp parallel for schedule(dynamic) // Paraleliza el ciclo para asignar memoria a cada fila de la matriz
     for (int i = 0; i < numActivos; i++) { //
         matriz[i] = (double*)malloc(numActivos * sizeof(double)); // Asigna memoria para cada fila de la matriz, que es un array de doubles
+        #pragma omp parallel for schedule(dynamic) // Paraleliza el ciclo para asignar valores a cada elemento de la matriz
         for (int j = 0; j < numActivos; j++) {
             matriz[i][j] = (i == j) ? 1.0 : 0.0; // Identidad simple (1 en la diagonal, 0 en otros lugares)
         }
@@ -98,18 +100,6 @@ void simularEscenariosCorrelacionadosParalelizado(Activo* cartera, int numActivo
 //La fórmula de Black-Scholes es una fórmula matemática que se utiliza para calcular el precio de las opciones financieras, basándose en la volatilidad del activo subyacente, el tiempo hasta la expiración de la opción, el precio de ejercicio de la opción y la tasa de interés libre de riesgo.
 
 
-//Función para simular escenarios con correlación entre activos de forma SECUANCIAL
-void simularEscenariosCorrelacionadosSecuenciual(Activo* cartera, int numActivos, int numEscenarios, double** matrizCovarianza) { // Simula escenarios con correlación entre activos
-    for (int i = 0; i < numEscenarios; i++) { // Itera sobre cada escenario, simulando el precio de cada activo
-        printf("Simulación %d:\n", i + 1); // Imprime el número de simulación actual (comienza en 1)
-        for (int j = 0; j < numActivos; j++) { // Itera sobre cada activo, simulando el precio ajustado
-            double nuevo_valor = simularPrecioLogNormal(cartera[j].valor_actual, cartera[j].tasa_rendimiento, cartera[j].riesgo, 1); // Simula el precio del activo, con la fórmula de Black-Scholes
-            printf("  Activo: %s, Valor ajustado: %.2f\n", cartera[j].nombre, nuevo_valor); // Imprime el nombre del activo y el precio simulado
-        }
-    }
-} //Simula el precio del activo, con la fórmula de Black-Scholes
-
-
 // Función para validar los datos de los activos
 int validarDatosParalelizado(Activo* cartera, int numActivos) { // Valida que los datos sean válidos
     int datosValidos = 1; // Variable para indicar si los datos son válidos o no
@@ -124,20 +114,6 @@ int validarDatosParalelizado(Activo* cartera, int numActivos) { // Valida que lo
     return datosValidos;
 }
 
-//Función para validar los datos de los activos de forma SECUANCIAL
-int validarDatosSecuencial(Activo* cartera, int numActivos) { // Valida que los datos sean válidos
-    int datosValidos = 1; // Variable para indicar si los datos son válidos o no
-
-    for (int i = 0; i < numActivos; i++) {
-        if (cartera[i].valor_actual <= 0 || cartera[i].riesgo <= 0) {
-            printf("Datos no válidos en el activo: %s\n", cartera[i].nombre);
-            datosValidos = 0;
-        } // Si el valor actual o el riesgo son menores o iguales a 0, los datos no son válidos
-    }
-    return datosValidos;
-}
-
-
 
 // Función para calcular pérdidas simuladas (necesaria para el cálculo de VaR)
 double* calcularPerdidasSimuladasParalelizado(Activo* cartera, int numActivos, int numEscenarios) { // Calcula las pérdidas simuladas para cada escenario y activo
@@ -149,21 +125,6 @@ double* calcularPerdidasSimuladasParalelizado(Activo* cartera, int numActivos, i
         for (int j = 0; j < numActivos; j++) {
             double nuevo_valor = simularPrecioLogNormal(cartera[j].valor_actual, cartera[j].tasa_rendimiento, cartera[j].riesgo, 1); // Simula el precio del activo, con la fórmula de Black-Scholes
             #pragma omp atomic // Asegura que la operación sea atómica, evitando condiciones de carrera
-            perdidas[i] += cartera[j].valor_actual - nuevo_valor; // Calcula la pérdida para el activo actual y la suma al total del escenario
-        }
-    }
-    return perdidas; // Retorna las pérdidas simuladas, que son un array de doubles, una por cada escenario
-}
-
-
-//Función para calcular pérdidas simuladas (necesaria para el cálculo de VaR) de forma SECUANCIAL
-double* calcularPerdidasSimuladasSecuencial(Activo* cartera, int numActivos, int numEscenarios) { // Calcula las pérdidas simuladas para cada escenario y activo
-    double* perdidas = (double*)malloc(numEscenarios * sizeof(double)); // Asigna memoria para las pérdidas simuladas (un array de doubles)
-
-    for (int i = 0; i < numEscenarios; i++) {
-        perdidas[i] = 0; // Inicializa las pérdidas para el escenario actual en 0, luego suma las pérdidas de cada activo
-        for (int j = 0; j < numActivos; j++) {
-            double nuevo_valor = simularPrecioLogNormal(cartera[j].valor_actual, cartera[j].tasa_rendimiento, cartera[j].riesgo, 1); // Simula el precio del activo, con la fórmula de Black-Scholes
             perdidas[i] += cartera[j].valor_actual - nuevo_valor; // Calcula la pérdida para el activo actual y la suma al total del escenario
         }
     }
@@ -192,6 +153,7 @@ double calcularVaRPercentil(double* perdidas, int numEscenarios, double confianz
 // Función para calcular la media de un array
 double calcularMedia(double* datos, int numDatos) { // Calcula la media de un array de datos, que es la suma de los datos dividida por el número de datos
     double suma = 0.0; // Inicializa la suma en 0, luego suma todos los datos
+    #pragma omp parallel for reduction(+:suma) // Paraleliza el ciclo y suma los resultados de cada hilo
     for (int i = 0; i < numDatos; i++) {
         suma += datos[i]; 
     }
@@ -202,6 +164,7 @@ double calcularMedia(double* datos, int numDatos) { // Calcula la media de un ar
 // Función para calcular la desviación eOk stándar de un array
 double calcularDesviacionEstandar(double* datos, int numDatos, double media) { // Calcula la desviación estándar de un array de datos, que es la raíz cuadrada de la varianza
     double suma = 0.0; // Inicializa la suma en 0, luego suma la diferencia al cuadrado entre cada dato y la media
+    #pragma omp parallel for reduction(+:suma) // Paraleliza el ciclo y suma los resultados de cada hilo
     for (int i = 0; i < numDatos; i++) {
         suma += pow(datos[i] - media, 2); // Suma la diferencia al cuadrado entre cada dato y la media
     }
@@ -247,6 +210,7 @@ void generarReporte(Activo* cartera, int numActivos, int numEscenarios, double* 
 
     // Resumen por Activo
     printf("Resumen por Activo:\n");
+    #pragma omp parallel for schedule(dynamic) // Paraleliza el ciclo para imprimir el resumen de cada activo
     for (int i = 0; i < numActivos; i++) {
         printf("Activo: %s\n", cartera[i].nombre); 
         
