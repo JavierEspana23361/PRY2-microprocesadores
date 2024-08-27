@@ -91,6 +91,7 @@ void simularEscenariosCorrelacionadosParalelizado(Activo* cartera, int numActivo
     #pragma omp parallel for schedule(dynamic) // Paraleliza el ciclo para simular cada escenario, con la misma semilla para todos los hilos
     for (int i = 0; i < numEscenarios; i++) { // Itera sobre cada escenario, simulando el precio de cada activo
         printf("Simulación %d:\n", i + 1); // Imprime el número de simulación actual (comienza en 1)
+        #pragma omp parallel for schedule(dynamic) // Paraleliza el ciclo para simular cada activo en el escenario actual
         for (int j = 0; j < numActivos; j++) { // Itera sobre cada activo, simulando el precio ajustado
             double nuevo_valor = simularPrecioLogNormal(cartera[j].valor_actual, cartera[j].tasa_rendimiento, cartera[j].riesgo, 1); // Simula el precio del activo, con la fórmula de Black-Scholes
             printf("  Activo: %s, Valor ajustado: %.2f\n", cartera[j].nombre, nuevo_valor); // Imprime el nombre del activo y el precio simulado
@@ -240,40 +241,44 @@ void generarReporte(Activo* cartera, int numActivos, int numEscenarios, double* 
 
     // Resumen por Activo
     fprintf(reporte, "Resumen por Activo:\n");
+    #pragma omp parallel for ordered
     for (int i = 0; i < numActivos; i++) {
-        fprintf(reporte, "\n");
-        fprintf(reporte, "Activo: %s\n", cartera[i].nombre);
-        fprintf(reporte, "  Valor Inicial: %.2f\n", cartera[i].valor_actual);
-        fprintf(reporte, "  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.\n");
-        if (cartera[i].valor_actual > 1000) {
-            fprintf(reporte, "  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.\n");
-        } else {
-            fprintf(reporte, "  -> Interpretación: El valor inicial es bajo, lo que podría indicar un activo de menor calidad o uno que está subvalorado.\n");
-        }
+        #pragma omp ordered
+        {
+            fprintf(reporte, "\n");
+            fprintf(reporte, "Activo: %s\n", cartera[i].nombre);
+            fprintf(reporte, "  Valor Inicial: %.2f\n", cartera[i].valor_actual);
+            fprintf(reporte, "  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.\n");
+            if (cartera[i].valor_actual > 1000) {
+                fprintf(reporte, "  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.\n");
+            } else {
+                fprintf(reporte, "  -> Interpretación: El valor inicial es bajo, lo que podría indicar un activo de menor calidad o uno que está subvalorado.\n");
+            }
 
-        // Tasa de Rendimiento
-        fprintf(reporte, "  Tasa de Rendimiento: %.2f\n", cartera[i].tasa_rendimiento);
-        fprintf(reporte, "  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.\n");
-        if (cartera[i].tasa_rendimiento > 0.05) {
-            fprintf(reporte, "  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.\n");
-        } else if (cartera[i].tasa_rendimiento > 0.02) {
-            fprintf(reporte, "  -> Interpretación: La tasa de rendimiento es moderada, lo que sugiere un balance entre riesgo y retorno.\n");
-        } else {
-            fprintf(reporte, "  -> Interpretación: La tasa de rendimiento es baja, lo que indica un retorno esperado limitado. Esto podría ser menos favorable si el riesgo es alto.\n");
-        }
+            // Tasa de Rendimiento
+            fprintf(reporte, "  Tasa de Rendimiento: %.2f\n", cartera[i].tasa_rendimiento);
+            fprintf(reporte, "  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.\n");
+            if (cartera[i].tasa_rendimiento > 0.05) {
+                fprintf(reporte, "  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.\n");
+            } else if (cartera[i].tasa_rendimiento > 0.02) {
+                fprintf(reporte, "  -> Interpretación: La tasa de rendimiento es moderada, lo que sugiere un balance entre riesgo y retorno.\n");
+            } else {
+                fprintf(reporte, "  -> Interpretación: La tasa de rendimiento es baja, lo que indica un retorno esperado limitado. Esto podría ser menos favorable si el riesgo es alto.\n");
+            }
 
-        // Riesgo (Volatilidad)
-        fprintf(reporte, "  Riesgo (Volatilidad): %.2f\n", cartera[i].riesgo);
-        fprintf(reporte, "  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.\n");
-        if (cartera[i].riesgo < 0.1) {
-            fprintf(reporte, "  -> Interpretación: El riesgo es bajo, lo cual es positivo para la estabilidad del activo, pero podría limitar el potencial de ganancias.\n");
-        } else if (cartera[i].riesgo < 0.3) {
-            fprintf(reporte, "  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.\n");
-        } else {
-            fprintf(reporte, "  -> Interpretación: El riesgo es alto, lo que indica una alta volatilidad. Esto puede llevar a grandes pérdidas o ganancias, por lo que se debe manejar con precaución.\n");
+            // Riesgo (Volatilidad)
+            fprintf(reporte, "  Riesgo (Volatilidad): %.2f\n", cartera[i].riesgo);
+            fprintf(reporte, "  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.\n");
+            if (cartera[i].riesgo < 0.1) {
+                fprintf(reporte, "  -> Interpretación: El riesgo es bajo, lo cual es positivo para la estabilidad del activo, pero podría limitar el potencial de ganancias.\n");
+            } else if (cartera[i].riesgo < 0.3) {
+                fprintf(reporte, "  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.\n");
+            } else {
+                fprintf(reporte, "  -> Interpretación: El riesgo es alto, lo que indica una alta volatilidad. Esto puede llevar a grandes pérdidas o ganancias, por lo que se debe manejar con precaución.\n");
+            }
+            fprintf(reporte, "\n");
+            fprintf(reporte, "\n");
         }
-        fprintf(reporte, "\n");
-        fprintf(reporte, "\n");
     }
 
     fclose(reporte);
