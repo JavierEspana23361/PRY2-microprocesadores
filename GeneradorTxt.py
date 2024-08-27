@@ -19,4 +19,4 @@ def GeneradorTxt(cantidad):
     except Exception as e:
         print(f"Error al generar el archivo: {e}")
 
-GeneradorTxt(1000)
+GeneradorTxt(100)

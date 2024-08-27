@@ -1,38 +1,272 @@
 
 --- Reporte Final ---
-Número de Activos: 10
+Número de Activos: 100
 Número de Escenarios: 1000
 
-Valor en Riesgo (VaR) de la cartera al 95% de confianza: -2954.29
+Valor en Riesgo (VaR) de la cartera al 95% de confianza: -13818.58
 Interpretación: El VaR representa la máxima pérdida esperada bajo condiciones normales de mercado con un nivel de confianza del 95%.
-Esto significa que, en el 95% de los casos, las pérdidas no superarán -2954.29 unidades monetarias.
+Esto significa que, en el 95% de los casos, las pérdidas no superarán -13818.58 unidades monetarias.
 Comentario: Este VaR es relativamente bajo, lo cual es favorable y sugiere que el riesgo de la cartera es moderado.
 
-Media de las Pérdidas Simuladas: -699.54
+Media de las Pérdidas Simuladas: -8776.13
 Interpretación: La media de las pérdidas simuladas indica la pérdida promedio esperada en los escenarios simulados.
 Comentario: La pérdida promedio es baja, lo cual es favorable para la estabilidad de la cartera.
 
-Desviación Estándar de las Pérdidas Simuladas: 1304.80
+Desviación Estándar de las Pérdidas Simuladas: 3387.25
 Interpretación: La desviación estándar mide la volatilidad de las pérdidas. Una desviación alta indica alta incertidumbre.
-Comentario: La volatilidad de las pérdidas es baja, lo que es favorable ya que indica estabilidad en los resultados.
+Comentario: La alta volatilidad sugiere que los resultados podrían ser impredecibles y volátiles, lo cual es un riesgo para la cartera.
 
 Resumen por Activo:
 
 Activo: Activo1
-  Valor Inicial: 1069.02
+  Valor Inicial: 1050.91
   -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
   -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
-  Tasa de Rendimiento: 0.01
+  Tasa de Rendimiento: 0.07
   -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
-  -> Interpretación: La tasa de rendimiento es baja, lo que indica un retorno esperado limitado. Esto podría ser menos favorable si el riesgo es alto.
-  Riesgo (Volatilidad): 0.20
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.12
   -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
   -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
 
 
 
 Activo: Activo2
-  Valor Inicial: 1970.00
+  Valor Inicial: 1722.79
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.05
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es moderada, lo que sugiere un balance entre riesgo y retorno.
+  Riesgo (Volatilidad): 0.14
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo3
+  Valor Inicial: 1884.55
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.05
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es moderada, lo que sugiere un balance entre riesgo y retorno.
+  Riesgo (Volatilidad): 0.10
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo4
+  Valor Inicial: 1729.54
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.10
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.23
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo5
+  Valor Inicial: 1900.71
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.04
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es moderada, lo que sugiere un balance entre riesgo y retorno.
+  Riesgo (Volatilidad): 0.17
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo6
+  Valor Inicial: 1667.11
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.04
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es moderada, lo que sugiere un balance entre riesgo y retorno.
+  Riesgo (Volatilidad): 0.30
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es alto, lo que indica una alta volatilidad. Esto puede llevar a grandes pérdidas o ganancias, por lo que se debe manejar con precaución.
+
+
+
+Activo: Activo7
+  Valor Inicial: 1402.20
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.09
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.27
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo8
+  Valor Inicial: 1265.77
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.01
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es baja, lo que indica un retorno esperado limitado. Esto podría ser menos favorable si el riesgo es alto.
+  Riesgo (Volatilidad): 0.12
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo9
+  Valor Inicial: 1738.28
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.07
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.24
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo10
+  Valor Inicial: 1815.86
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.04
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es moderada, lo que sugiere un balance entre riesgo y retorno.
+  Riesgo (Volatilidad): 0.23
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo11
+  Valor Inicial: 1309.91
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.04
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es moderada, lo que sugiere un balance entre riesgo y retorno.
+  Riesgo (Volatilidad): 0.12
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo12
+  Valor Inicial: 1861.84
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.03
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es moderada, lo que sugiere un balance entre riesgo y retorno.
+  Riesgo (Volatilidad): 0.28
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo13
+  Valor Inicial: 1051.87
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.05
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es moderada, lo que sugiere un balance entre riesgo y retorno.
+  Riesgo (Volatilidad): 0.15
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo14
+  Valor Inicial: 1363.48
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.04
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es moderada, lo que sugiere un balance entre riesgo y retorno.
+  Riesgo (Volatilidad): 0.17
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo15
+  Valor Inicial: 1382.57
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.10
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.24
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo16
+  Valor Inicial: 1566.64
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.06
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.20
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo17
+  Valor Inicial: 1723.21
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.06
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.29
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo18
+  Valor Inicial: 1097.43
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.09
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.28
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo19
+  Valor Inicial: 1289.57
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.07
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.27
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo20
+  Valor Inicial: 1289.45
   -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
   -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
   Tasa de Rendimiento: 0.05
@@ -44,11 +278,50 @@ Activo: Activo2
 
 
 
-Activo: Activo3
-  Valor Inicial: 1569.47
+Activo: Activo21
+  Valor Inicial: 1989.90
   -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
   -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
-  Tasa de Rendimiento: 0.09
+  Tasa de Rendimiento: 0.08
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.16
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo22
+  Valor Inicial: 1457.58
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.05
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es moderada, lo que sugiere un balance entre riesgo y retorno.
+  Riesgo (Volatilidad): 0.14
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo23
+  Valor Inicial: 1006.33
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.03
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es moderada, lo que sugiere un balance entre riesgo y retorno.
+  Riesgo (Volatilidad): 0.29
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo24
+  Valor Inicial: 1800.27
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.06
   -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
   -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
   Riesgo (Volatilidad): 0.25
@@ -57,8 +330,294 @@ Activo: Activo3
 
 
 
-Activo: Activo4
-  Valor Inicial: 1713.65
+Activo: Activo25
+  Valor Inicial: 1855.89
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.02
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es baja, lo que indica un retorno esperado limitado. Esto podría ser menos favorable si el riesgo es alto.
+  Riesgo (Volatilidad): 0.14
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo26
+  Valor Inicial: 1031.08
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.07
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.11
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo27
+  Valor Inicial: 1118.11
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.03
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es moderada, lo que sugiere un balance entre riesgo y retorno.
+  Riesgo (Volatilidad): 0.29
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo28
+  Valor Inicial: 1155.78
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.05
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es moderada, lo que sugiere un balance entre riesgo y retorno.
+  Riesgo (Volatilidad): 0.11
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo29
+  Valor Inicial: 1805.24
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.10
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.24
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo30
+  Valor Inicial: 1849.23
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.09
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.15
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo31
+  Valor Inicial: 1804.32
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.08
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.11
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo32
+  Valor Inicial: 1071.93
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.05
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es moderada, lo que sugiere un balance entre riesgo y retorno.
+  Riesgo (Volatilidad): 0.19
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo33
+  Valor Inicial: 1464.92
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.07
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.18
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo34
+  Valor Inicial: 1444.01
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.07
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.18
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo35
+  Valor Inicial: 1870.24
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.04
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es moderada, lo que sugiere un balance entre riesgo y retorno.
+  Riesgo (Volatilidad): 0.23
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo36
+  Valor Inicial: 1874.21
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.05
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es moderada, lo que sugiere un balance entre riesgo y retorno.
+  Riesgo (Volatilidad): 0.23
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo37
+  Valor Inicial: 1822.03
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.10
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.24
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo38
+  Valor Inicial: 1209.26
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.02
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es baja, lo que indica un retorno esperado limitado. Esto podría ser menos favorable si el riesgo es alto.
+  Riesgo (Volatilidad): 0.27
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo39
+  Valor Inicial: 1087.20
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.10
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.16
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo40
+  Valor Inicial: 1611.30
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.03
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es moderada, lo que sugiere un balance entre riesgo y retorno.
+  Riesgo (Volatilidad): 0.13
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo41
+  Valor Inicial: 1253.60
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.09
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.19
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo42
+  Valor Inicial: 1839.21
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.01
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es baja, lo que indica un retorno esperado limitado. Esto podría ser menos favorable si el riesgo es alto.
+  Riesgo (Volatilidad): 0.22
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo43
+  Valor Inicial: 1093.89
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.05
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es moderada, lo que sugiere un balance entre riesgo y retorno.
+  Riesgo (Volatilidad): 0.26
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo44
+  Valor Inicial: 1049.83
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.03
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es moderada, lo que sugiere un balance entre riesgo y retorno.
+  Riesgo (Volatilidad): 0.14
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo45
+  Valor Inicial: 1784.60
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.03
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es moderada, lo que sugiere un balance entre riesgo y retorno.
+  Riesgo (Volatilidad): 0.26
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo46
+  Valor Inicial: 1943.57
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.08
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.28
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo47
+  Valor Inicial: 1113.40
   -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
   -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
   Tasa de Rendimiento: 0.03
@@ -70,24 +629,219 @@ Activo: Activo4
 
 
 
-Activo: Activo5
-  Valor Inicial: 1398.33
+Activo: Activo48
+  Valor Inicial: 1183.35
   -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
   -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
-  Tasa de Rendimiento: 0.08
+  Tasa de Rendimiento: 0.02
   -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
-  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
-  Riesgo (Volatilidad): 0.20
+  -> Interpretación: La tasa de rendimiento es baja, lo que indica un retorno esperado limitado. Esto podría ser menos favorable si el riesgo es alto.
+  Riesgo (Volatilidad): 0.13
   -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
   -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
 
 
 
-Activo: Activo6
-  Valor Inicial: 1679.86
+Activo: Activo49
+  Valor Inicial: 1463.97
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.09
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.15
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo50
+  Valor Inicial: 1791.90
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.08
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.28
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo51
+  Valor Inicial: 1322.50
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.06
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.13
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo52
+  Valor Inicial: 1342.79
   -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
   -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
   Tasa de Rendimiento: 0.04
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es moderada, lo que sugiere un balance entre riesgo y retorno.
+  Riesgo (Volatilidad): 0.13
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo53
+  Valor Inicial: 1134.56
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.09
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.15
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo54
+  Valor Inicial: 1155.46
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.02
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es baja, lo que indica un retorno esperado limitado. Esto podría ser menos favorable si el riesgo es alto.
+  Riesgo (Volatilidad): 0.25
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo55
+  Valor Inicial: 1246.79
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.08
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.17
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo56
+  Valor Inicial: 1313.32
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.09
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.16
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo57
+  Valor Inicial: 1020.29
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.07
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.27
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo58
+  Valor Inicial: 1526.45
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.02
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es baja, lo que indica un retorno esperado limitado. Esto podría ser menos favorable si el riesgo es alto.
+  Riesgo (Volatilidad): 0.19
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo59
+  Valor Inicial: 1351.48
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.04
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es moderada, lo que sugiere un balance entre riesgo y retorno.
+  Riesgo (Volatilidad): 0.11
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo60
+  Valor Inicial: 1414.83
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.01
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es baja, lo que indica un retorno esperado limitado. Esto podría ser menos favorable si el riesgo es alto.
+  Riesgo (Volatilidad): 0.23
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo61
+  Valor Inicial: 1838.87
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.04
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es moderada, lo que sugiere un balance entre riesgo y retorno.
+  Riesgo (Volatilidad): 0.11
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo62
+  Valor Inicial: 1785.33
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.08
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.16
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo63
+  Valor Inicial: 1390.77
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.01
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es baja, lo que indica un retorno esperado limitado. Esto podría ser menos favorable si el riesgo es alto.
+  Riesgo (Volatilidad): 0.25
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo64
+  Valor Inicial: 1432.45
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.03
   -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
   -> Interpretación: La tasa de rendimiento es moderada, lo que sugiere un balance entre riesgo y retorno.
   Riesgo (Volatilidad): 0.19
@@ -96,11 +850,323 @@ Activo: Activo6
 
 
 
-Activo: Activo7
-  Valor Inicial: 1952.28
+Activo: Activo65
+  Valor Inicial: 1743.87
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.09
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.12
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo66
+  Valor Inicial: 1471.15
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.04
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es moderada, lo que sugiere un balance entre riesgo y retorno.
+  Riesgo (Volatilidad): 0.21
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo67
+  Valor Inicial: 1532.47
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.08
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.15
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo68
+  Valor Inicial: 1801.15
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.08
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.12
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo69
+  Valor Inicial: 1213.55
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.05
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es moderada, lo que sugiere un balance entre riesgo y retorno.
+  Riesgo (Volatilidad): 0.20
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo70
+  Valor Inicial: 1748.61
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.09
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.15
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo71
+  Valor Inicial: 1153.03
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.07
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.10
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo72
+  Valor Inicial: 1295.29
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.10
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.28
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo73
+  Valor Inicial: 1500.01
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.06
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.15
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo74
+  Valor Inicial: 1595.22
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.01
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es baja, lo que indica un retorno esperado limitado. Esto podría ser menos favorable si el riesgo es alto.
+  Riesgo (Volatilidad): 0.27
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo75
+  Valor Inicial: 1296.36
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.02
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es baja, lo que indica un retorno esperado limitado. Esto podría ser menos favorable si el riesgo es alto.
+  Riesgo (Volatilidad): 0.12
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo76
+  Valor Inicial: 1494.82
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.06
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.10
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo77
+  Valor Inicial: 1108.67
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.09
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.18
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo78
+  Valor Inicial: 1858.44
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.10
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.21
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo79
+  Valor Inicial: 1081.84
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.01
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es baja, lo que indica un retorno esperado limitado. Esto podría ser menos favorable si el riesgo es alto.
+  Riesgo (Volatilidad): 0.20
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo80
+  Valor Inicial: 1815.80
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.09
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.14
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo81
+  Valor Inicial: 1103.41
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.10
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.11
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo82
+  Valor Inicial: 1012.89
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.07
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.26
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo83
+  Valor Inicial: 1454.69
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.05
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es moderada, lo que sugiere un balance entre riesgo y retorno.
+  Riesgo (Volatilidad): 0.23
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo84
+  Valor Inicial: 1547.89
   -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
   -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
   Tasa de Rendimiento: 0.03
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es moderada, lo que sugiere un balance entre riesgo y retorno.
+  Riesgo (Volatilidad): 0.11
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo85
+  Valor Inicial: 1975.64
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.09
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.18
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo86
+  Valor Inicial: 1386.47
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.02
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es baja, lo que indica un retorno esperado limitado. Esto podría ser menos favorable si el riesgo es alto.
+  Riesgo (Volatilidad): 0.27
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo87
+  Valor Inicial: 1321.23
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.04
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es moderada, lo que sugiere un balance entre riesgo y retorno.
+  Riesgo (Volatilidad): 0.25
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo88
+  Valor Inicial: 1043.39
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.04
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es moderada, lo que sugiere un balance entre riesgo y retorno.
+  Riesgo (Volatilidad): 0.23
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo89
+  Valor Inicial: 1340.65
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.04
   -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
   -> Interpretación: La tasa de rendimiento es moderada, lo que sugiere un balance entre riesgo y retorno.
   Riesgo (Volatilidad): 0.18
@@ -109,41 +1175,145 @@ Activo: Activo7
 
 
 
-Activo: Activo8
-  Valor Inicial: 1921.93
+Activo: Activo90
+  Valor Inicial: 1394.10
   -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
   -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
-  Tasa de Rendimiento: 0.02
+  Tasa de Rendimiento: 0.05
   -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
-  -> Interpretación: La tasa de rendimiento es baja, lo que indica un retorno esperado limitado. Esto podría ser menos favorable si el riesgo es alto.
-  Riesgo (Volatilidad): 0.28
+  -> Interpretación: La tasa de rendimiento es moderada, lo que sugiere un balance entre riesgo y retorno.
+  Riesgo (Volatilidad): 0.10
   -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
   -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
 
 
 
-Activo: Activo9
-  Valor Inicial: 1196.41
+Activo: Activo91
+  Valor Inicial: 1839.19
   -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
   -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
-  Tasa de Rendimiento: 0.07
+  Tasa de Rendimiento: 0.06
   -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
   -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.29
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo92
+  Valor Inicial: 1799.77
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.04
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es moderada, lo que sugiere un balance entre riesgo y retorno.
+  Riesgo (Volatilidad): 0.13
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo93
+  Valor Inicial: 1698.88
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.01
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es baja, lo que indica un retorno esperado limitado. Esto podría ser menos favorable si el riesgo es alto.
   Riesgo (Volatilidad): 0.22
   -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
   -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
 
 
 
-Activo: Activo10
-  Valor Inicial: 1596.99
+Activo: Activo94
+  Valor Inicial: 1949.09
   -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
   -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
-  Tasa de Rendimiento: 0.02
+  Tasa de Rendimiento: 0.06
   -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
-  -> Interpretación: La tasa de rendimiento es baja, lo que indica un retorno esperado limitado. Esto podría ser menos favorable si el riesgo es alto.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
   Riesgo (Volatilidad): 0.30
   -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
   -> Interpretación: El riesgo es alto, lo que indica una alta volatilidad. Esto puede llevar a grandes pérdidas o ganancias, por lo que se debe manejar con precaución.
+
+
+
+Activo: Activo95
+  Valor Inicial: 1544.15
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.07
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.29
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo96
+  Valor Inicial: 1153.93
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.10
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.11
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo97
+  Valor Inicial: 1115.57
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.06
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.24
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo98
+  Valor Inicial: 1444.57
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.09
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.27
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo99
+  Valor Inicial: 1444.04
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.06
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.20
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
+
+
+
+Activo: Activo100
+  Valor Inicial: 1808.47
+  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.
+  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.
+  Tasa de Rendimiento: 0.09
+  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.
+  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.
+  Riesgo (Volatilidad): 0.10
+  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.
+  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.
 
 

@@ -77,6 +77,12 @@ double** generarMatrizCovarianza(int numActivos) { // Genera una matriz de covar
         matriz[i] = (double*)malloc(numActivos * sizeof(double)); // Asigna memoria para cada fila de la matriz, que es un array de doubles
         for (int j = 0; j < numActivos; j++) {
             matriz[i][j] = (i == j) ? 1.0 : 0.0; // Identidad simple (1 en la diagonal, 0 en otros lugares)
+            for (int i = 0; i < numActivos; i++) {
+                matriz[i] = (double*)malloc(numActivos * sizeof(double));
+                for (int j = 0; j < numActivos; j++) {
+                    matriz[i][j] = (i == j) ? 1.0 : 0.0;
+                }
+            }
         }
     }
     return matriz; 
@@ -91,6 +97,9 @@ void simularEscenariosCorrelacionadosSecuenciual(Activo* cartera, int numActivos
         for (int j = 0; j < numActivos; j++) { // Itera sobre cada activo, simulando el precio ajustado
             double nuevo_valor = simularPrecioLogNormal(cartera[j].valor_actual, cartera[j].tasa_rendimiento, cartera[j].riesgo, 1); // Simula el precio del activo, con la fórmula de Black-Scholes
             printf("  Activo: %s, Valor ajustado: %.2f\n", cartera[j].nombre, nuevo_valor); // Imprime el nombre del activo y el precio simulado
+            for (int k = 0; k < numActivos; k++) { // Itera sobre cada activo, ajustando el precio simulado con la correlación
+                nuevo_valor += matrizCovarianza[j][k] * (simularPrecioLogNormal(cartera[k].valor_actual, cartera[k].tasa_rendimiento, cartera[k].riesgo, 1) - cartera[k].valor_actual); // Ajusta el precio simulado con la correlación entre activos
+            }
         }
     }
 } //Simula el precio del activo, con la fórmula de Black-Scholes
@@ -113,12 +122,16 @@ int validarDatosSecuencial(Activo* cartera, int numActivos) { // Valida que los 
 //Función para calcular pérdidas simuladas (necesaria para el cálculo de VaR) de forma SECUANCIAL
 double* calcularPerdidasSimuladasSecuencial(Activo* cartera, int numActivos, int numEscenarios) { // Calcula las pérdidas simuladas para cada escenario y activo
     double* perdidas = (double*)malloc(numEscenarios * sizeof(double)); // Asigna memoria para las pérdidas simuladas (un array de doubles)
+    int valor = 1/10000;
 
     for (int i = 0; i < numEscenarios; i++) {
         perdidas[i] = 0; // Inicializa las pérdidas para el escenario actual en 0, luego suma las pérdidas de cada activo
         for (int j = 0; j < numActivos; j++) {
             double nuevo_valor = simularPrecioLogNormal(cartera[j].valor_actual, cartera[j].tasa_rendimiento, cartera[j].riesgo, 1); // Simula el precio del activo, con la fórmula de Black-Scholes
             perdidas[i] += cartera[j].valor_actual - nuevo_valor; // Calcula la pérdida para el activo actual y la suma al total del escenario
+            for (int k = 0; k < numActivos; k++) {
+                valor += 1/10000;
+            }
         }
     }
     return perdidas; // Retorna las pérdidas simuladas, que son un array de doubles, una por cada escenario
@@ -144,24 +157,45 @@ double calcularVaRPercentil(double* perdidas, int numEscenarios, double confianz
 
 
 // Función para calcular la media de un array
-double calcularMedia(double* datos, int numDatos) { // Calcula la media de un array de datos, que es la suma de los datos dividida por el número de datos
-    double suma = 0.0; // Inicializa la suma en 0, luego suma todos los datos
-    for (int i = 0; i < numDatos; i++) {
-        suma += datos[i]; 
+double calcularMedia(double* datos, int numDatos) {
+    if (numDatos == 0) {
+        fprintf(stderr, "Error: El número de datos es cero.\n");
+        return NAN; // Retorna NaN si no hay datos
     }
-    return suma / numDatos; 
+    double suma = 0.0;
+    for (int i = 0; i < numDatos; i++) {
+        suma += datos[i];
+    }
+    return suma / numDatos;
 }
 
 
 // Función para calcular la desviación eOk stándar de un array
-double calcularDesviacionEstandar(double* datos, int numDatos, double media) { // Calcula la desviación estándar de un array de datos, que es la raíz cuadrada de la varianza
-    double suma = 0.0; // Inicializa la suma en 0, luego suma la diferencia al cuadrado entre cada dato y la media
-    for (int i = 0; i < numDatos; i++) {
-        suma += pow(datos[i] - media, 2); // Suma la diferencia al cuadrado entre cada dato y la media
+double calcularDesviacionEstandar(double* datos, int numDatos, double media) {
+    if (numDatos == 0) {
+        fprintf(stderr, "Error: El número de datos es cero.\n");
+        return NAN;
     }
-    return sqrt(suma / numDatos); // Retorna la raíz cuadrada de la varianza, que es la suma de la diferencia al cuadrado entre cada dato y la media, dividida por el número de datos
-} //pow es una función que calcula la potencia de un número, en este caso, la diferencia entre el dato y la media, elevada al cuadrado
-
+    double suma = 0.0;
+    int tiene_nan = 0;
+    for (int i = 0; i < numDatos; i++) {
+        if (isnan(datos[i])) {
+            fprintf(stderr, "Error: Encontrado NaN en datos[%d]\n", i);
+            tiene_nan = 1;
+        } else {
+            suma += pow(datos[i] - media, 2);
+        }
+    }
+    if (tiene_nan) {
+        return NAN;
+    }
+    double varianza = suma / numDatos;
+    if (varianza < 0) {
+        fprintf(stderr, "Error: Varianza negativa.\n");
+        return NAN;
+    }
+    return sqrt(varianza);
+}
 
 // Función para generar el reporte final con interpretaciones
 void generarReporte(Activo* cartera, int numActivos, int numEscenarios, double* perdidas, double var) {
