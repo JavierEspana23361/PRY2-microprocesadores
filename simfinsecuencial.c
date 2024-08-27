@@ -242,7 +242,6 @@ void generarReporte(Activo* cartera, int numActivos, int numEscenarios, double* 
 
 // Función principal
 int main() {
-    double start_time = omp_get_wtime();
     Activo* cartera;
     int numActivos;
     const char* nombreArchivo = "datos.txt";
@@ -261,6 +260,7 @@ int main() {
     printf("Activo4 22000.00 0.08 0.04\n\n");
     printf("Presione cualquier tecla para continuar\n\n");
     getchar();
+    double start_time = omp_get_wtime();
 
     // Lectura del archivo
     if (!leerArchivoTXT(nombreArchivo, &cartera, &numActivos)) {

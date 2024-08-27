@@ -87,8 +87,8 @@ double** generarMatrizCovarianza(int numActivos) { // Genera una matriz de covar
 
 
 // Función para simular escenarios con correlación entre activos
-double* simularEscenariosCorrelacionadosParalelizado(Activo* cartera, int numActivos, int numEscenarios, double** matrizCovarianza) {
-    double* perdidas = (double*)malloc(numEscenarios * sizeof(double));
+double* simularEscenariosCorrelacionadosParalelizado(Activo* cartera, int numActivos, int numEscenarios, double** matrizCovarianza) { // Simula escenarios con correlación entre activos
+    double* perdidas = (double*)malloc(numEscenarios * sizeof(double)); //Usa la matriz de covarianza para simular escenarios con correlación entre activos, donde las pérdidas se calculan para cada escenario
     #pragma omp parallel for schedule(dynamic)
     for (int i = 0; i < numEscenarios; i++) {
         printf("Simulación %d:\n", i + 1);
@@ -250,7 +250,6 @@ void generarReporte(Activo* cartera, int numActivos, int numEscenarios, double* 
 
 // Función principal
 int main() {
-    double start_time = omp_get_wtime();
     Activo* cartera;
     int numActivos;
     const char* nombreArchivo = "datos.txt";
@@ -269,6 +268,8 @@ int main() {
     printf("Activo4 22000.00 0.08 0.04\n\n");
     printf("Presione cualquier tecla para continuar\n\n");
     getchar();
+
+    double start_time = omp_get_wtime();
 
     // Lectura del archivo
     if (!leerArchivoTXT(nombreArchivo, &cartera, &numActivos)) {
