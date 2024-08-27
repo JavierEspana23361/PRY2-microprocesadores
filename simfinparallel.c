@@ -173,87 +173,92 @@ double calcularDesviacionEstandar(double* datos, int numDatos, double media) { /
 
 
 // Función para generar el reporte final con interpretaciones
-void generarReporte(Activo* cartera, int numActivos, int numEscenarios, double* perdidas, double var) { // Genera un reporte final con interpretaciones de los resultados
-    printf("\n--- Reporte Final ---\n");
-    printf("Número de Activos: %d\n", numActivos);
-    printf("Número de Escenarios: %d\n\n", numEscenarios);
+void generarReporte(Activo* cartera, int numActivos, int numEscenarios, double* perdidas, double var) {
+    FILE *reporte = fopen("reporte_final.txt", "w");
+    if (reporte == NULL) {
+        printf("Error al abrir el archivo para escribir el reporte.\n");
+        return;
+    }
+
+    fprintf(reporte, "\n--- Reporte Final ---\n");
+    fprintf(reporte, "Número de Activos: %d\n", numActivos);
+    fprintf(reporte, "Número de Escenarios: %d\n\n", numEscenarios);
 
     // Valor en Riesgo (VaR)
-    printf("Valor en Riesgo (VaR) de la cartera al 95%% de confianza: %.2f\n", var);
-    printf("Interpretación: El VaR representa la máxima pérdida esperada bajo condiciones normales de mercado con un nivel de confianza del 95%%.\n");
-    printf("Esto significa que, en el 95%% de los casos, las pérdidas no superarán %.2f unidades monetarias.\n", var);
+    fprintf(reporte, "Valor en Riesgo (VaR) de la cartera al 95%% de confianza: %.2f\n", var);
+    fprintf(reporte, "Interpretación: El VaR representa la máxima pérdida esperada bajo condiciones normales de mercado con un nivel de confianza del 95%%.\n");
+    fprintf(reporte, "Esto significa que, en el 95%% de los casos, las pérdidas no superarán %.2f unidades monetarias.\n", var);
     if (var < 10000) {
-        printf("Comentario: Este VaR es relativamente bajo, lo cual es favorable y sugiere que el riesgo de la cartera es moderado.\n\n");
+        fprintf(reporte, "Comentario: Este VaR es relativamente bajo, lo cual es favorable y sugiere que el riesgo de la cartera es moderado.\n\n");
     } else {
-        printf("Comentario: Este VaR es alto, indicando un riesgo significativo en la cartera. Se recomienda revisar la composición de los activos.\n\n");
+        fprintf(reporte, "Comentario: Este VaR es alto, indicando un riesgo significativo en la cartera. Se recomienda revisar la composición de los activos.\n\n");
     }
 
     // Media de las Pérdidas Simuladas
-    double mediaPerdidas = calcularMedia(perdidas, numEscenarios); // Calcula la media de las pérdidas simuladas, que es la suma de las pérdidas dividida por el número de escenarios
-    printf("Media de las Pérdidas Simuladas: %.2f\n", mediaPerdidas);
-    printf("Interpretación: La media de las pérdidas simuladas indica la pérdida promedio esperada en los escenarios simulados.\n");
+    double mediaPerdidas = calcularMedia(perdidas, numEscenarios);
+    fprintf(reporte, "Media de las Pérdidas Simuladas: %.2f\n", mediaPerdidas);
+    fprintf(reporte, "Interpretación: La media de las pérdidas simuladas indica la pérdida promedio esperada en los escenarios simulados.\n");
     if (mediaPerdidas < 5000) {
-        printf("Comentario: La pérdida promedio es baja, lo cual es favorable para la estabilidad de la cartera.\n\n");
+        fprintf(reporte, "Comentario: La pérdida promedio es baja, lo cual es favorable para la estabilidad de la cartera.\n\n");
     } else {
-        printf("Comentario: La pérdida promedio es alta, lo que podría ser una señal de que la cartera está expuesta a riesgos considerables.\n\n");
+        fprintf(reporte, "Comentario: La pérdida promedio es alta, lo que podría ser una señal de que la cartera está expuesta a riesgos considerables.\n\n");
     }
 
     // Desviación Estándar de las Pérdidas Simuladas
-    double desviacionEstandarPerdidas = calcularDesviacionEstandar(perdidas, numEscenarios, mediaPerdidas); // Calcula la desviación estándar de las pérdidas simuladas
-    printf("Desviación Estándar de las Pérdidas Simuladas: %.2f\n", desviacionEstandarPerdidas);
-    printf("Interpretación: La desviación estándar mide la volatilidad de las pérdidas. Una desviación alta indica alta incertidumbre.\n");
+    double desviacionEstandarPerdidas = calcularDesviacionEstandar(perdidas, numEscenarios, mediaPerdidas);
+    fprintf(reporte, "Desviación Estándar de las Pérdidas Simuladas: %.2f\n", desviacionEstandarPerdidas);
+    fprintf(reporte, "Interpretación: La desviación estándar mide la volatilidad de las pérdidas. Una desviación alta indica alta incertidumbre.\n");
     if (desviacionEstandarPerdidas < 2000) {
-        printf("Comentario: La volatilidad de las pérdidas es baja, lo que es favorable ya que indica estabilidad en los resultados.\n\n");
+        fprintf(reporte, "Comentario: La volatilidad de las pérdidas es baja, lo que es favorable ya que indica estabilidad en los resultados.\n\n");
     } else {
-        printf("Comentario: La alta volatilidad sugiere que los resultados podrían ser impredecibles y volátiles, lo cual es un riesgo para la cartera.\n\n");
+        fprintf(reporte, "Comentario: La alta volatilidad sugiere que los resultados podrían ser impredecibles y volátiles, lo cual es un riesgo para la cartera.\n\n");
     }
-    
-}
 
-void ResumenPorActivo(Activo* cartera, int numActivos) { // Resumen por Activo
-     // Resumen por Activo
-    printf("Resumen por Activo:\n");
-    #pragma omp parallel for schedule(dynamic) // Paraleliza el ciclo para imprimir el resumen de cada activo
+    // Resumen por Activo
+    fprintf(reporte, "Resumen por Activo:\n");
+    #pragma omp parallel for schedule(dynamic)
     for (int i = 0; i < numActivos; i++) {
-        printf("Activo: %s\n", cartera[i].nombre); 
-        
-        // Valor Inicial
-        printf("  Valor Inicial: %.2f\n", cartera[i].valor_actual); //El valor inicial es el precio o valor actual en el mercado
-        printf("  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.\n");
+        fprintf(reporte, "Activo: %s\n", cartera[i].nombre);
+        fprintf(reporte, "  Valor Inicial: %.2f\n", cartera[i].valor_actual);
+        fprintf(reporte, "  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.\n");
         if (cartera[i].valor_actual > 1000) {
-            printf("  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.\n");
+            fprintf(reporte, "  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.\n");
         } else {
-            printf("  -> Interpretación: El valor inicial es bajo, lo que podría indicar un activo de menor calidad o uno que está subvalorado.\n");
+            fprintf(reporte, "  -> Interpretación: El valor inicial es bajo, lo que podría indicar un activo de menor calidad o uno que está subvalorado.\n");
         }
-        
+
         // Tasa de Rendimiento
-        printf("  Tasa de Rendimiento: %.2f\n", cartera[i].tasa_rendimiento); //La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje
-        printf("  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.\n");
+        fprintf(reporte, "  Tasa de Rendimiento: %.2f\n", cartera[i].tasa_rendimiento);
+        fprintf(reporte, "  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.\n");
         if (cartera[i].tasa_rendimiento > 0.05) {
-            printf("  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.\n");
+            fprintf(reporte, "  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.\n");
         } else if (cartera[i].tasa_rendimiento > 0.02) {
-            printf("  -> Interpretación: La tasa de rendimiento es moderada, lo que sugiere un balance entre riesgo y retorno.\n");
+            fprintf(reporte, "  -> Interpretación: La tasa de rendimiento es moderada, lo que sugiere un balance entre riesgo y retorno.\n");
         } else {
-            printf("  -> Interpretación: La tasa de rendimiento es baja, lo que indica un retorno esperado limitado. Esto podría ser menos favorable si el riesgo es alto.\n");
+            fprintf(reporte, "  -> Interpretación: La tasa de rendimiento es baja, lo que indica un retorno esperado limitado. Esto podría ser menos favorable si el riesgo es alto.\n");
         }
 
         // Riesgo (Volatilidad)
-        printf("  Riesgo (Volatilidad): %.2f\n", cartera[i].riesgo); //El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo
-        printf("  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.\n");
+        fprintf(reporte, "  Riesgo (Volatilidad): %.2f\n", cartera[i].riesgo);
+        fprintf(reporte, "  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.\n");
         if (cartera[i].riesgo < 0.1) {
-            printf("  -> Interpretación: El riesgo es bajo, lo cual es positivo para la estabilidad del activo, pero podría limitar el potencial de ganancias.\n");
+            fprintf(reporte, "  -> Interpretación: El riesgo es bajo, lo cual es positivo para la estabilidad del activo, pero podría limitar el potencial de ganancias.\n");
         } else if (cartera[i].riesgo < 0.3) {
-            printf("  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.\n");
+            fprintf(reporte, "  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.\n");
         } else {
-            printf("  -> Interpretación: El riesgo es alto, lo que indica una alta volatilidad. Esto puede llevar a grandes pérdidas o ganancias, por lo que se debe manejar con precaución.\n");
+            fprintf(reporte, "  -> Interpretación: El riesgo es alto, lo que indica una alta volatilidad. Esto puede llevar a grandes pérdidas o ganancias, por lo que se debe manejar con precaución.\n");
         }
         
-        printf("\n");
+        fprintf(reporte, "\n");
     }
 
-
-    printf("\nReporte generado correctamente.\n");
+    fclose(reporte);
+    printf("Reporte generado exitosamente en 'reporte_final.txt'.\n");
 }
+
+
+   
+
 
 
 
@@ -306,25 +311,6 @@ int main() {
     // Generación de reporte con las nuevas funciones
     generarReporte(cartera, numActivos, numEscenarios, perdidas, var); // Genera un reporte final con interpretaciones de los resultados
 
-    double mid1_time = omp_get_wtime(); // Obtiene el tiempo de ejecución actual
-
-    double mid_time = mid1_time - start_time; // Calcula el tiempo de ejecución de la simulación y el cálculo de VaR
-
-    double mid2_time; // Variable para almacenar el tiempo de ejecución de la generación del reporte
-
-    printf("Desea ver un resumen por activo? (s/n)\n");
-    char resumen;
-    scanf("%c", &resumen);
-    if (resumen == 's') {
-        mid2_time = omp_get_wtime(); // Obtiene el tiempo de ejecución actual
-        ResumenPorActivo(cartera, numActivos); // Resumen por Activo
-    }
-    else {
-        mid2_time = omp_get_wtime(); // Obtiene el tiempo de ejecución actual
-        printf("Reporte generado correctamente.\n");
-    }
-    
-
 
     // Liberar memoria
     free(cartera); // Liberar la memoria asignada
@@ -335,8 +321,8 @@ int main() {
     free(perdidas); // Liberar la memoria asignada para las pérdidas simuladas
 
     double end_time = omp_get_wtime(); // Obtiene el tiempo de ejecución final
-    double total_time = end_time - mid2_time + mid_time; // Calcula el tiempo total de ejecución
+    double total_time = end_time - start_time; // Calcula el tiempo total de ejecución
     printf("Tiempo de ejecución total: %.5f segundos\n", total_time); // Imprime el tiempo total de ejecución
-    
+
     return 0;
 }
