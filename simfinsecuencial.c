@@ -325,6 +325,6 @@ int main() {
 
     double end_time = omp_get_wtime(); // Obtiene el tiempo de ejecución final
     double total_time = end_time - mid2_time + mid_time; // Calcula el tiempo total de ejecución
-    
+    printf("Tiempo de ejecución total: %.5f segundos\n", total_time); // Imprime el tiempo total de ejecución
     return 0;
 }
