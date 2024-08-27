@@ -50,6 +50,7 @@ int leerArchivoTXT(const char* nombreArchivo, Activo** cartera, int* numActivos)
     return 1;
 }
 
+
 // Función para generar un número aleatorio con distribución normal usando el método Box-Muller
 double generarDistribucionNormal(double media, double desviacion) { // Genera un número aleatorio con distribución normal
     double u1 = (double)rand() / RAND_MAX; // Genera un número aleatorio entre 0 y 1, RAND_MAX es la máxima cantidad de números aleatorios que se pueden generar
@@ -77,38 +78,28 @@ double** generarMatrizCovarianza(int numActivos) { // Genera una matriz de covar
         matriz[i] = (double*)malloc(numActivos * sizeof(double)); // Asigna memoria para cada fila de la matriz, que es un array de doubles
         for (int j = 0; j < numActivos; j++) {
             matriz[i][j] = (i == j) ? 1.0 : 0.0; // Identidad simple (1 en la diagonal, 0 en otros lugares)
-            for (int i = 0; i < numActivos; i++) {
-                matriz[i] = (double*)malloc(numActivos * sizeof(double));
-                for (int j = 0; j < numActivos; j++) {
-                    matriz[i][j] = (i == j) ? 1.0 : 0.0;
-                }
-            }
         }
     }
     return matriz; 
 }
 
 
-//Función para simular escenarios con correlación entre activos de forma SECUANCIAL
-void simularEscenariosCorrelacionadosSecuenciual(Activo* cartera, int numActivos, int numEscenarios, double** matrizCovarianza) { // Simula escenarios con correlación entre activos
-    
+// Función para simular escenarios con correlación entre activos
+void simularEscenariosCorrelacionadosParalelizado(Activo* cartera, int numActivos, int numEscenarios, double** matrizCovarianza) { // Simula escenarios con correlación entre activos
     for (int i = 0; i < numEscenarios; i++) { // Itera sobre cada escenario, simulando el precio de cada activo
         printf("Simulación %d:\n", i + 1); // Imprime el número de simulación actual (comienza en 1)
         for (int j = 0; j < numActivos; j++) { // Itera sobre cada activo, simulando el precio ajustado
             double nuevo_valor = simularPrecioLogNormal(cartera[j].valor_actual, cartera[j].tasa_rendimiento, cartera[j].riesgo, 1); // Simula el precio del activo, con la fórmula de Black-Scholes
             printf("  Activo: %s, Valor ajustado: %.2f\n", cartera[j].nombre, nuevo_valor); // Imprime el nombre del activo y el precio simulado
-            for (int k = 0; k < numActivos; k++) { // Itera sobre cada activo, ajustando el precio simulado con la correlación
-                nuevo_valor += matrizCovarianza[j][k] * (simularPrecioLogNormal(cartera[k].valor_actual, cartera[k].tasa_rendimiento, cartera[k].riesgo, 1) - cartera[k].valor_actual); // Ajusta el precio simulado con la correlación entre activos
-            }
         }
     }
 } //Simula el precio del activo, con la fórmula de Black-Scholes
+//La fórmula de Black-Scholes es una fórmula matemática que se utiliza para calcular el precio de las opciones financieras, basándose en la volatilidad del activo subyacente, el tiempo hasta la expiración de la opción, el precio de ejercicio de la opción y la tasa de interés libre de riesgo.
 
 
-//Función para validar los datos de los activos de forma SECUANCIAL
-int validarDatosSecuencial(Activo* cartera, int numActivos) { // Valida que los datos sean válidos
+// Función para validar los datos de los activos
+int validarDatosParalelizado(Activo* cartera, int numActivos) { // Valida que los datos sean válidos
     int datosValidos = 1; // Variable para indicar si los datos son válidos o no
-
     for (int i = 0; i < numActivos; i++) {
         if (cartera[i].valor_actual <= 0 || cartera[i].riesgo <= 0) {
             printf("Datos no válidos en el activo: %s\n", cartera[i].nombre);
@@ -119,19 +110,14 @@ int validarDatosSecuencial(Activo* cartera, int numActivos) { // Valida que los 
 }
 
 
-//Función para calcular pérdidas simuladas (necesaria para el cálculo de VaR) de forma SECUANCIAL
-double* calcularPerdidasSimuladasSecuencial(Activo* cartera, int numActivos, int numEscenarios) { // Calcula las pérdidas simuladas para cada escenario y activo
+// Función para calcular pérdidas simuladas (necesaria para el cálculo de VaR)
+double* calcularPerdidasSimuladasParalelizado(Activo* cartera, int numActivos, int numEscenarios) { // Calcula las pérdidas simuladas para cada escenario y activo
     double* perdidas = (double*)malloc(numEscenarios * sizeof(double)); // Asigna memoria para las pérdidas simuladas (un array de doubles)
-    int valor = 1/10000;
-
     for (int i = 0; i < numEscenarios; i++) {
         perdidas[i] = 0; // Inicializa las pérdidas para el escenario actual en 0, luego suma las pérdidas de cada activo
         for (int j = 0; j < numActivos; j++) {
             double nuevo_valor = simularPrecioLogNormal(cartera[j].valor_actual, cartera[j].tasa_rendimiento, cartera[j].riesgo, 1); // Simula el precio del activo, con la fórmula de Black-Scholes
             perdidas[i] += cartera[j].valor_actual - nuevo_valor; // Calcula la pérdida para el activo actual y la suma al total del escenario
-            for (int k = 0; k < numActivos; k++) {
-                valor += 1/10000;
-            }
         }
     }
     return perdidas; // Retorna las pérdidas simuladas, que son un array de doubles, una por cada escenario
@@ -170,6 +156,7 @@ double calcularMedia(double* datos, int numDatos) {
 }
 
 
+
 // Función para calcular la desviación eOk stándar de un array
 double calcularDesviacionEstandar(double* datos, int numDatos, double media) {
     if (numDatos == 0) {
@@ -196,6 +183,8 @@ double calcularDesviacionEstandar(double* datos, int numDatos, double media) {
     }
     return sqrt(varianza);
 }
+
+
 
 // Función para generar el reporte final con interpretaciones
 void generarReporte(Activo* cartera, int numActivos, int numEscenarios, double* perdidas, double var) {
@@ -242,44 +231,47 @@ void generarReporte(Activo* cartera, int numActivos, int numEscenarios, double* 
     // Resumen por Activo
     fprintf(reporte, "Resumen por Activo:\n");
     for (int i = 0; i < numActivos; i++) {
-        fprintf(reporte, "\n");
-        fprintf(reporte, "Activo: %s\n", cartera[i].nombre);
-        fprintf(reporte, "  Valor Inicial: %.2f\n", cartera[i].valor_actual);
-        fprintf(reporte, "  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.\n");
-        if (cartera[i].valor_actual > 1000) {
-            fprintf(reporte, "  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.\n");
-        } else {
-            fprintf(reporte, "  -> Interpretación: El valor inicial es bajo, lo que podría indicar un activo de menor calidad o uno que está subvalorado.\n");
-        }
+        {
+            fprintf(reporte, "\n");
+            fprintf(reporte, "Activo: %s\n", cartera[i].nombre);
+            fprintf(reporte, "  Valor Inicial: %.2f\n", cartera[i].valor_actual);
+            fprintf(reporte, "  -> Este es el valor con el que se empieza a trabajar para este activo. Representa el precio o valor actual en el mercado.\n");
+            if (cartera[i].valor_actual > 1000) {
+                fprintf(reporte, "  -> Interpretación: El valor inicial es alto, lo que puede ser una señal positiva de la calidad o estabilidad del activo.\n");
+            } else {
+                fprintf(reporte, "  -> Interpretación: El valor inicial es bajo, lo que podría indicar un activo de menor calidad o uno que está subvalorado.\n");
+            }
 
-        // Tasa de Rendimiento
-        fprintf(reporte, "  Tasa de Rendimiento: %.2f\n", cartera[i].tasa_rendimiento);
-        fprintf(reporte, "  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.\n");
-        if (cartera[i].tasa_rendimiento > 0.05) {
-            fprintf(reporte, "  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.\n");
-        } else if (cartera[i].tasa_rendimiento > 0.02) {
-            fprintf(reporte, "  -> Interpretación: La tasa de rendimiento es moderada, lo que sugiere un balance entre riesgo y retorno.\n");
-        } else {
-            fprintf(reporte, "  -> Interpretación: La tasa de rendimiento es baja, lo que indica un retorno esperado limitado. Esto podría ser menos favorable si el riesgo es alto.\n");
-        }
+            // Tasa de Rendimiento
+            fprintf(reporte, "  Tasa de Rendimiento: %.2f\n", cartera[i].tasa_rendimiento);
+            fprintf(reporte, "  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.\n");
+            if (cartera[i].tasa_rendimiento > 0.05) {
+                fprintf(reporte, "  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.\n");
+            } else if (cartera[i].tasa_rendimiento > 0.02) {
+                fprintf(reporte, "  -> Interpretación: La tasa de rendimiento es moderada, lo que sugiere un balance entre riesgo y retorno.\n");
+            } else {
+                fprintf(reporte, "  -> Interpretación: La tasa de rendimiento es baja, lo que indica un retorno esperado limitado. Esto podría ser menos favorable si el riesgo es alto.\n");
+            }
 
-        // Riesgo (Volatilidad)
-        fprintf(reporte, "  Riesgo (Volatilidad): %.2f\n", cartera[i].riesgo);
-        fprintf(reporte, "  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.\n");
-        if (cartera[i].riesgo < 0.1) {
-            fprintf(reporte, "  -> Interpretación: El riesgo es bajo, lo cual es positivo para la estabilidad del activo, pero podría limitar el potencial de ganancias.\n");
-        } else if (cartera[i].riesgo < 0.3) {
-            fprintf(reporte, "  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.\n");
-        } else {
-            fprintf(reporte, "  -> Interpretación: El riesgo es alto, lo que indica una alta volatilidad. Esto puede llevar a grandes pérdidas o ganancias, por lo que se debe manejar con precaución.\n");
+            // Riesgo (Volatilidad)
+            fprintf(reporte, "  Riesgo (Volatilidad): %.2f\n", cartera[i].riesgo);
+            fprintf(reporte, "  -> El riesgo, también conocido como volatilidad, mide la variabilidad del valor del activo. Un valor de riesgo alto implica mayor incertidumbre en los resultados.\n");
+            if (cartera[i].riesgo < 0.1) {
+                fprintf(reporte, "  -> Interpretación: El riesgo es bajo, lo cual es positivo para la estabilidad del activo, pero podría limitar el potencial de ganancias.\n");
+            } else if (cartera[i].riesgo < 0.3) {
+                fprintf(reporte, "  -> Interpretación: El riesgo es moderado, sugiriendo un balance entre estabilidad y potencial de crecimiento.\n");
+            } else {
+                fprintf(reporte, "  -> Interpretación: El riesgo es alto, lo que indica una alta volatilidad. Esto puede llevar a grandes pérdidas o ganancias, por lo que se debe manejar con precaución.\n");
+            }
+            fprintf(reporte, "\n");
+            fprintf(reporte, "\n");
         }
-        fprintf(reporte, "\n");
-        fprintf(reporte, "\n");
     }
 
     fclose(reporte);
     printf("Reporte generado exitosamente en 'reporte_final.txt'.\n");
 }
+
 
 
 
@@ -312,7 +304,7 @@ int main() {
     }
 
     // Validación de datos
-    if (!validarDatosSecuencial(cartera, numActivos)) {
+    if (!validarDatosParalelizado(cartera, numActivos)) {
         free(cartera);
         return 1;
     }
@@ -322,10 +314,10 @@ int main() {
 
     // Simulación de escenarios
     int numEscenarios = 1000;
-    simularEscenariosCorrelacionadosSecuenciual(cartera, numActivos, numEscenarios, matrizCovarianza);
+    simularEscenariosCorrelacionadosParalelizado(cartera, numActivos, numEscenarios, matrizCovarianza);
 
     // Generar pérdidas simuladas para calcular VaR
-    double* perdidas = calcularPerdidasSimuladasSecuencial(cartera, numActivos, numEscenarios);
+    double* perdidas = calcularPerdidasSimuladasParalelizado(cartera, numActivos, numEscenarios);
 
     // Cálculo del VaR
     double var = calcularVaRPercentil(perdidas, numEscenarios, 0.95);

@@ -88,9 +88,11 @@ double** generarMatrizCovarianza(int numActivos) { // Genera una matriz de covar
 
 // Función para simular escenarios con correlación entre activos
 void simularEscenariosCorrelacionadosParalelizado(Activo* cartera, int numActivos, int numEscenarios, double** matrizCovarianza) { // Simula escenarios con correlación entre activos
+    omp_set_num_threads(4); // Establece el número de hilos a 4
     #pragma omp parallel for schedule(dynamic) // Paraleliza el ciclo para simular cada escenario, con la misma semilla para todos los hilos
     for (int i = 0; i < numEscenarios; i++) { // Itera sobre cada escenario, simulando el precio de cada activo
         printf("Simulación %d:\n", i + 1); // Imprime el número de simulación actual (comienza en 1)
+        omp_set_num_threads(4); // Establece el número de hilos a 4
         #pragma omp parallel for schedule(dynamic) // Paraleliza el ciclo para simular cada activo en el escenario actual
         for (int j = 0; j < numActivos; j++) { // Itera sobre cada activo, simulando el precio ajustado
             double nuevo_valor = simularPrecioLogNormal(cartera[j].valor_actual, cartera[j].tasa_rendimiento, cartera[j].riesgo, 1); // Simula el precio del activo, con la fórmula de Black-Scholes
@@ -104,7 +106,7 @@ void simularEscenariosCorrelacionadosParalelizado(Activo* cartera, int numActivo
 // Función para validar los datos de los activos
 int validarDatosParalelizado(Activo* cartera, int numActivos) { // Valida que los datos sean válidos
     int datosValidos = 1; // Variable para indicar si los datos son válidos o no
-    omp_set_num_threads(12); // Establece el número de hilos a 12
+    omp_set_num_threads(8); // Establece el número de hilos a 4
     #pragma omp parallel for schedule (dynamic) // Paraleliza el ciclo para validar cada activo
     for (int i = 0; i < numActivos; i++) {
         if (cartera[i].valor_actual <= 0 || cartera[i].riesgo <= 0) {
@@ -119,7 +121,7 @@ int validarDatosParalelizado(Activo* cartera, int numActivos) { // Valida que lo
 // Función para calcular pérdidas simuladas (necesaria para el cálculo de VaR)
 double* calcularPerdidasSimuladasParalelizado(Activo* cartera, int numActivos, int numEscenarios) { // Calcula las pérdidas simuladas para cada escenario y activo
     double* perdidas = (double*)malloc(numEscenarios * sizeof(double)); // Asigna memoria para las pérdidas simuladas (un array de doubles)
-    omp_set_num_threads(12); // Establece el número de hilos a 12
+    omp_set_num_threads(4); // Establece el número de hilos a 12
     #pragma omp parallel for schedule (dynamic)// Paraleliza el ciclo para calcular las pérdidas de cada escenario
     for (int i = 0; i < numEscenarios; i++) {
         perdidas[i] = 0; // Inicializa las pérdidas para el escenario actual en 0, luego suma las pérdidas de cada activo
@@ -158,6 +160,7 @@ double calcularMedia(double* datos, int numDatos) {
         return NAN; // Retorna NaN si no hay datos
     }
     double suma = 0.0;
+    omp_set_num_threads(4); // Establece el número de hilos a 12
     #pragma omp parallel for reduction(+:suma)
     for (int i = 0; i < numDatos; i++) {
         suma += datos[i];
@@ -175,6 +178,7 @@ double calcularDesviacionEstandar(double* datos, int numDatos, double media) {
     }
     double suma = 0.0;
     int tiene_nan = 0;
+    omp_set_num_threads(4); // Establece el número de hilos a 12
     #pragma omp parallel for reduction(+:suma) reduction(+:tiene_nan)
     for (int i = 0; i < numDatos; i++) {
         if (isnan(datos[i])) {
@@ -241,6 +245,8 @@ void generarReporte(Activo* cartera, int numActivos, int numEscenarios, double* 
 
     // Resumen por Activo
     fprintf(reporte, "Resumen por Activo:\n");
+    omp_set_num_threads(4); // Establece el número de hilos a 4
+
     #pragma omp parallel for ordered
     for (int i = 0; i < numActivos; i++) {
         #pragma omp ordered
@@ -340,6 +346,7 @@ int main() {
 
     // Liberar memoria
     free(cartera);
+    omp_set_num_threads(4); // Establece el número de hilos a 12
     #pragma omp parallel for schedule(dynamic)
     for (int i = 0; i < numActivos; i++) {
         free(matrizCovarianza[i]);
