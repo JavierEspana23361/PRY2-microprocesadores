@@ -199,7 +199,9 @@ void generarReporte(Activo* cartera, int numActivos, int numEscenarios, double* 
     } else {
         printf("Comentario: La alta volatilidad sugiere que los resultados podrían ser impredecibles y volátiles, lo cual es un riesgo para la cartera.\n\n");
     }
+}
 
+void ResumenPorActivo(Activo* cartera, int numActivos) {
     // Resumen por Activo
     printf("Resumen por Activo:\n");
     for (int i = 0; i < numActivos; i++) {
@@ -294,6 +296,25 @@ int main() {
     // Generación de reporte con las nuevas funciones
     generarReporte(cartera, numActivos, numEscenarios, perdidas, var); // Genera un reporte final con interpretaciones de los resultados
 
+    double mid1_time = omp_get_wtime(); // Obtiene el tiempo de ejecución actual
+
+    double mid_time = mid1_time - start_time; // Calcula el tiempo de ejecución de la simulación y el cálculo de VaR
+
+    double mid2_time; // Variable para almacenar el tiempo de ejecución de la generación del reporte
+
+    printf("Desea ver un resumen por activo? (s/n)\n");
+    char resumen;
+    scanf("%c", &resumen);
+    if (resumen == 's') {
+        mid2_time = omp_get_wtime(); // Obtiene el tiempo de ejecución actual
+        ResumenPorActivo(cartera, numActivos); // Resumen por Activo
+    }
+    else {
+        mid2_time = omp_get_wtime(); // Obtiene el tiempo de ejecución actual
+        printf("Reporte generado correctamente.\n");
+    }
+
+
     // Liberar memoria
     free(cartera); // Liberar la memoria asignada
     for (int i = 0; i < numActivos; i++) { // Liberar la memoria asignada para la matriz de covarianza
@@ -302,8 +323,8 @@ int main() {
     free(matrizCovarianza); // Liberar la memoria asignada para la matriz
     free(perdidas); // Liberar la memoria asignada para las pérdidas simuladas
 
-    double end_time = omp_get_wtime(); // Termina el cronómetro para medir el tiempo de ejecución
-    printf("Tiempo de ejecución: %f segundos\n", end_time - start_time); // Imprime el tiempo de ejecución
+    double end_time = omp_get_wtime(); // Obtiene el tiempo de ejecución final
+    double total_time = end_time - mid2_time + mid_time; // Calcula el tiempo total de ejecución
     
     return 0;
 }
