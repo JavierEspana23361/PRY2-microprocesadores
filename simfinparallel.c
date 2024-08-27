@@ -51,21 +51,6 @@ int leerArchivoTXT(const char* nombreArchivo, Activo** cartera, int* numActivos)
 }
 
 
-// Función para validar los datos de los activos
-int validarDatos(Activo* cartera, int numActivos) { // Valida que los datos sean válidos
-    int datosValidos = 1; // Variable para indicar si los datos son válidos o no
-
-    #pragma omp parallel for // Paraleliza el ciclo para validar cada activo
-    for (int i = 0; i < numActivos; i++) {
-        if (cartera[i].valor_actual <= 0 || cartera[i].riesgo <= 0) {
-            printf("Datos no válidos en el activo: %s\n", cartera[i].nombre);
-            datosValidos = 0;
-        } // Si el valor actual o el riesgo son menores o iguales a 0, los datos no son válidos
-    }
-    return datosValidos;
-}
-
-
 // Función para generar un número aleatorio con distribución normal usando el método Box-Muller
 double generarDistribucionNormal(double media, double desviacion) { // Genera un número aleatorio con distribución normal
     double u1 = (double)rand() / RAND_MAX; // Genera un número aleatorio entre 0 y 1, RAND_MAX es la máxima cantidad de números aleatorios que se pueden generar
@@ -100,7 +85,7 @@ double** generarMatrizCovarianza(int numActivos) { // Genera una matriz de covar
 
 
 // Función para simular escenarios con correlación entre activos
-void simularEscenariosCorrelacionados(Activo* cartera, int numActivos, int numEscenarios, double** matrizCovarianza) { // Simula escenarios con correlación entre activos
+void simularEscenariosCorrelacionadosParalelizado(Activo* cartera, int numActivos, int numEscenarios, double** matrizCovarianza) { // Simula escenarios con correlación entre activos
     #pragma omp parallel for // Paraleliza el ciclo para simular cada escenario, con la misma semilla para todos los hilos
     for (int i = 0; i < numEscenarios; i++) { // Itera sobre cada escenario, simulando el precio de cada activo
         printf("Simulación %d:\n", i + 1); // Imprime el número de simulación actual (comienza en 1)
@@ -113,8 +98,49 @@ void simularEscenariosCorrelacionados(Activo* cartera, int numActivos, int numEs
 //La fórmula de Black-Scholes es una fórmula matemática que se utiliza para calcular el precio de las opciones financieras, basándose en la volatilidad del activo subyacente, el tiempo hasta la expiración de la opción, el precio de ejercicio de la opción y la tasa de interés libre de riesgo.
 
 
+//Función para simular escenarios con correlación entre activos de forma SECUANCIAL
+void simularEscenariosCorrelacionadosSecuenciual(Activo* cartera, int numActivos, int numEscenarios, double** matrizCovarianza) { // Simula escenarios con correlación entre activos
+    for (int i = 0; i < numEscenarios; i++) { // Itera sobre cada escenario, simulando el precio de cada activo
+        printf("Simulación %d:\n", i + 1); // Imprime el número de simulación actual (comienza en 1)
+        for (int j = 0; j < numActivos; j++) { // Itera sobre cada activo, simulando el precio ajustado
+            double nuevo_valor = simularPrecioLogNormal(cartera[j].valor_actual, cartera[j].tasa_rendimiento, cartera[j].riesgo, 1); // Simula el precio del activo, con la fórmula de Black-Scholes
+            printf("  Activo: %s, Valor ajustado: %.2f\n", cartera[j].nombre, nuevo_valor); // Imprime el nombre del activo y el precio simulado
+        }
+    }
+} //Simula el precio del activo, con la fórmula de Black-Scholes
+
+
+// Función para validar los datos de los activos
+int validarDatosParalelizado(Activo* cartera, int numActivos) { // Valida que los datos sean válidos
+    int datosValidos = 1; // Variable para indicar si los datos son válidos o no
+
+    #pragma omp parallel for // Paraleliza el ciclo para validar cada activo
+    for (int i = 0; i < numActivos; i++) {
+        if (cartera[i].valor_actual <= 0 || cartera[i].riesgo <= 0) {
+            printf("Datos no válidos en el activo: %s\n", cartera[i].nombre);
+            datosValidos = 0;
+        } // Si el valor actual o el riesgo son menores o iguales a 0, los datos no son válidos
+    }
+    return datosValidos;
+}
+
+//Función para validar los datos de los activos de forma SECUANCIAL
+int validarDatosSecuencial(Activo* cartera, int numActivos) { // Valida que los datos sean válidos
+    int datosValidos = 1; // Variable para indicar si los datos son válidos o no
+
+    for (int i = 0; i < numActivos; i++) {
+        if (cartera[i].valor_actual <= 0 || cartera[i].riesgo <= 0) {
+            printf("Datos no válidos en el activo: %s\n", cartera[i].nombre);
+            datosValidos = 0;
+        } // Si el valor actual o el riesgo son menores o iguales a 0, los datos no son válidos
+    }
+    return datosValidos;
+}
+
+
+
 // Función para calcular pérdidas simuladas (necesaria para el cálculo de VaR)
-double* calcularPerdidasSimuladas(Activo* cartera, int numActivos, int numEscenarios) { // Calcula las pérdidas simuladas para cada escenario y activo
+double* calcularPerdidasSimuladasParalelizado(Activo* cartera, int numActivos, int numEscenarios) { // Calcula las pérdidas simuladas para cada escenario y activo
     double* perdidas = (double*)malloc(numEscenarios * sizeof(double)); // Asigna memoria para las pérdidas simuladas (un array de doubles)
 
     #pragma omp parallel for // Paraleliza el ciclo para calcular las pérdidas de cada escenario
@@ -123,6 +149,21 @@ double* calcularPerdidasSimuladas(Activo* cartera, int numActivos, int numEscena
         for (int j = 0; j < numActivos; j++) {
             double nuevo_valor = simularPrecioLogNormal(cartera[j].valor_actual, cartera[j].tasa_rendimiento, cartera[j].riesgo, 1); // Simula el precio del activo, con la fórmula de Black-Scholes
             #pragma omp atomic // Asegura que la operación sea atómica, evitando condiciones de carrera
+            perdidas[i] += cartera[j].valor_actual - nuevo_valor; // Calcula la pérdida para el activo actual y la suma al total del escenario
+        }
+    }
+    return perdidas; // Retorna las pérdidas simuladas, que son un array de doubles, una por cada escenario
+}
+
+
+//Función para calcular pérdidas simuladas (necesaria para el cálculo de VaR) de forma SECUANCIAL
+double* calcularPerdidasSimuladasSecuencial(Activo* cartera, int numActivos, int numEscenarios) { // Calcula las pérdidas simuladas para cada escenario y activo
+    double* perdidas = (double*)malloc(numEscenarios * sizeof(double)); // Asigna memoria para las pérdidas simuladas (un array de doubles)
+
+    for (int i = 0; i < numEscenarios; i++) {
+        perdidas[i] = 0; // Inicializa las pérdidas para el escenario actual en 0, luego suma las pérdidas de cada activo
+        for (int j = 0; j < numActivos; j++) {
+            double nuevo_valor = simularPrecioLogNormal(cartera[j].valor_actual, cartera[j].tasa_rendimiento, cartera[j].riesgo, 1); // Simula el precio del activo, con la fórmula de Black-Scholes
             perdidas[i] += cartera[j].valor_actual - nuevo_valor; // Calcula la pérdida para el activo actual y la suma al total del escenario
         }
     }
@@ -251,6 +292,7 @@ void generarReporte(Activo* cartera, int numActivos, int numEscenarios, double* 
 
 // Función principal
 int main() {
+    double start_time = omp_get_wtime(); // Inicia el cronómetro para medir el tiempo de ejecución
     Activo* cartera; // Arreglo de activos que se inicializa con la lectura del archivo
     int numActivos; // Número de activos en la cartera
     const char* nombreArchivo = "datos.txt"; // Nombre del archivo de datos 
@@ -275,7 +317,7 @@ int main() {
     }
 
     // Validación de datos
-    if (!validarDatos(cartera, numActivos)) { // Valida que los datos de los activos sean válidos
+    if (!validarDatosParalelizado(cartera, numActivos)) { // Valida que los datos de los activos sean válidos
         free(cartera);
         return 1;
     }
@@ -285,10 +327,10 @@ int main() {
 
     // Simulación de escenarios usando la nueva función
     int numEscenarios = 1000; // Número de escenarios a simular
-    simularEscenariosCorrelacionados(cartera, numActivos, numEscenarios, matrizCovarianza); // Simula escenarios con correlación entre activos
+    simularEscenariosCorrelacionadosParalelizado(cartera, numActivos, numEscenarios, matrizCovarianza); // Simula escenarios con correlación entre activos
 
     // Generar pérdidas simuladas para calcular VaR
-    double* perdidas = calcularPerdidasSimuladas(cartera, numActivos, numEscenarios); // Calcula las pérdidas simuladas para cada escenario y activo
+    double* perdidas = calcularPerdidasSimuladasParalelizado(cartera, numActivos, numEscenarios); // Calcula las pérdidas simuladas para cada escenario y activo
 
     // Cálculo del VaR usando la función mejorada
     double var = calcularVaRPercentil(perdidas, numEscenarios, 0.95); // Calcula el VaR de acuerdo a un percentil dado (95%)
@@ -305,5 +347,7 @@ int main() {
     free(matrizCovarianza); // Liberar la memoria asignada para la matriz
     free(perdidas); // Liberar la memoria asignada para las pérdidas simuladas
 
+    double end_time = omp_get_wtime(); // Termina el cronómetro para medir el tiempo de ejecución
+    printf("Tiempo de ejecución: %f segundos\n", end_time - start_time); // Imprime el tiempo de ejecución
     return 0;
 }
