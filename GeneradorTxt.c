@@ -64,7 +64,7 @@ void GeneradorTxt(int cantidad) {
 }
 
 int main() {
-    int cantidad = 500;
+    int cantidad = 200;
     GeneradorTxt(cantidad);
     return 0;
 }

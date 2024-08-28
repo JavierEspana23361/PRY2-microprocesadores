@@ -79,6 +79,16 @@ double** generarMatrizCovarianza(int numActivos) { // Genera una matriz de covar
         for (int j = 0; j < numActivos; j++) {
             matriz[i][j] = (i == j) ? 1.0 : 0.0; // Identidad simple (1 en la diagonal, 0 en otros lugares)
         }
+
+        int sum2 = 0;
+        for (int j = 0; j < numActivos; j++) {
+            for (int k = 0; k < numActivos; k++) {
+                for (int l = 0; l < 250; l++) {
+                    sum2 += 1;
+                    sum2 *= 2;
+                }
+            }
+        }
     }
     return matriz; 
 }
@@ -212,7 +222,7 @@ void generarReporte(Activo* cartera, int numActivos, int numEscenarios, double* 
         fprintf(reporte, "  -> La tasa de rendimiento es el retorno esperado del activo, expresado como un porcentaje. Una tasa más alta suele ser positiva, pero puede venir acompañada de mayor riesgo.\n");
         if (cartera[i].tasa_rendimiento > 0.05) {
             fprintf(reporte, "  -> Interpretación: La tasa de rendimiento es alta, lo que es favorable para las ganancias esperadas, pero revisa el riesgo asociado.\n");
-        } else if (cartera[i].tasa_rendimiento > 0.02) {
+        } else if (cartera[i].tasa_rendimiento > 0.02 && cartera[i].tasa_rendimiento <= 0.05) {
             fprintf(reporte, "  -> Interpretación: La tasa de rendimiento es moderada, lo que sugiere un balance entre riesgo y retorno.\n");
         } else {
             fprintf(reporte, "  -> Interpretación: La tasa de rendimiento es baja, lo que indica un retorno esperado limitado. Esto podría ser menos favorable si el riesgo es alto.\n");
