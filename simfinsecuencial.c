@@ -96,19 +96,20 @@ double** generarMatrizCovarianza(int numActivos) { // Genera una matriz de covar
 
 // Función para simular escenarios con correlación entre activos
 double* simularEscenariosCorrelacionadosParalelizado(Activo* cartera, int numActivos, int numEscenarios, double** matrizCovarianza) {
-    double* perdidas = (double*)malloc(numEscenarios * sizeof(double));
-    for (int i = 0; i < numEscenarios; i++) {
-        printf("Simulación %d:\n", i + 1);
+    double* perdidas = (double*)malloc(numEscenarios * sizeof(double)); //malloc asigna memoria dinámica para un array de pérdidas
+    for (int i = 0; i < numEscenarios; i++) { // Iterar sobre cada escenario y simular los precios de los activos 
+        printf("Simulación %d:\n", i + 1); // Imprimir el número de simulación actual
         perdidas[i] = 0; // Inicializar pérdidas del escenario
-        for (int j = 0; j < numActivos; j++) {
+        for (int j = 0; j < numActivos; j++) { // Iterar sobre cada activo en la cartera y simular el precio ajustado
             double nuevo_valor = simularPrecioLogNormal(cartera[j].valor_actual, cartera[j].tasa_rendimiento, cartera[j].riesgo, 1);
             perdidas[i] += cartera[j].valor_actual - nuevo_valor;
             printf("  Activo: %s, Valor ajustado: %.2f\n", cartera[j].nombre, nuevo_valor);
         }
     }
-    return perdidas; // Retornar pérdidas simuladas
-} //Simula el precio del activo, con la fórmula de Black-Scholes
-//La fórmula de Black-Scholes es una fórmula matemática que se utiliza para calcular el precio de las opciones financieras, basándose en la volatilidad del activo subyacente, el tiempo hasta la expiración de la opción, el precio de ejercicio de la opción y la tasa de interés libre de riesgo.
+    return perdidas; 
+} // Esta función simula escenarios con correlación entre activos, utilizando la matriz de covarianza para ajustar los precios de los activos, y calcula las pérdidas para cada escenario
+// La simulación de escenarios con correlación implica ajustar los precios de los activos de acuerdo a la matriz de covarianza, que refleja la correlación entre los activos, y calcular las pérdidas para cada escenario, que es la diferencia entre el valor inicial y el valor ajustado de los activos
+// La correlación entre activos es importante en la simulación financiera, ya que los precios de los activos pueden estar influenciados por factores comunes, como eventos macroeconómicos o tendencias del mercado
 
 
 // Función para validar los datos de los activos
@@ -252,7 +253,7 @@ void generarReporte(Activo* cartera, int numActivos, int numEscenarios, double* 
 
 // Función principal
 int main() {
-    Activo* cartera;
+    Activo* cartera; // Arreglo de activos
     int numActivos;
     const char* nombreArchivo = "datos.txt";
 
@@ -278,22 +279,20 @@ int main() {
     }
 
     // Validación de datos
-    if (!validarDatosParalelizado(cartera, numActivos)) {
-        free(cartera);
+    if (!validarDatosParalelizado(cartera, numActivos)) { // Valida que los datos sean válidos, es decir que sean números positivos
+        free(cartera); // Libera la memoria asignada a la cartera si los datos no son válidos
         return 1;
     }
 
     // Definir la matriz de covarianza
-    double** matrizCovarianza = generarMatrizCovarianza(numActivos);
+    double** matrizCovarianza = generarMatrizCovarianza(numActivos); // Genera una matriz de covarianza simple, que es una matriz identidad simple (1 en la diagonal, 0 en otros lugares)
 
     // Simulación de escenarios
-    int numEscenarios = 1000;
-
-    // Imprimir cartera
+    int numEscenarios = 1000; //Define el número de escenarios a simular
    
 
     // Generar pérdidas simuladas para calcular VaR
-    double* perdidas = simularEscenariosCorrelacionadosParalelizado(cartera, numActivos, numEscenarios, matrizCovarianza);
+    double* perdidas = simularEscenariosCorrelacionadosParalelizado(cartera, numActivos, numEscenarios, matrizCovarianza); // Simula los escenarios y calcula las pérdidas, utilizando la matriz de covarianza
 
 
     // Cálculo del VaR

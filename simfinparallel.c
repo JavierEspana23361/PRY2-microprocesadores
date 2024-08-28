@@ -94,9 +94,9 @@ double* simularEscenariosCorrelacionadosParalelizado(Activo* cartera, int numAct
         printf("Simulación %d:\n", i + 1);
         perdidas[i] = 0; // Inicializar pérdidas del escenario
         for (int j = 0; j < numActivos; j++) {
-            double nuevo_valor = simularPrecioLogNormal(cartera[j].valor_actual, cartera[j].tasa_rendimiento, cartera[j].riesgo, 1);
-            perdidas[i] += cartera[j].valor_actual - nuevo_valor;
-            printf("  Activo: %s, Valor ajustado: %.2f\n", cartera[j].nombre, nuevo_valor);
+            double nuevo_valor = simularPrecioLogNormal(cartera[j].valor_actual, cartera[j].tasa_rendimiento, cartera[j].riesgo, 1); // Simular el precio del activo
+            perdidas[i] += cartera[j].valor_actual - nuevo_valor; // Calcular la pérdida del activo
+            printf("  Activo: %s, Valor ajustado: %.2f\n", cartera[j].nombre, nuevo_valor); // Imprimir el valor ajustado del activo
         }
     }
     return perdidas; // Retornar pérdidas simuladas
