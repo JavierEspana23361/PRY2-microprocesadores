@@ -204,7 +204,7 @@ void generarReporte(Activo* cartera, int numActivos, int numEscenarios, double* 
 
     // Resumen por Activo
     fprintf(reporte, "Resumen por Activo:\n");
-    #pragma omp parallel for schedule(dynamic)
+    #pragma omp parallel ordered
     for (int i = 0; i < numActivos; i++) {
         fprintf(reporte, "Activo: %s\n", cartera[i].nombre);
         fprintf(reporte, "  Valor Inicial: %.2f\n", cartera[i].valor_actual);
